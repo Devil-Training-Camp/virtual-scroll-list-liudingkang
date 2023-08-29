@@ -1,0 +1,12 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid #000; */
+}
+.list-item-odd {
+  background-color: rgb(229, 178, 38);
+}
+.list-item-even {
+  background-color: cadetblue;
+}
