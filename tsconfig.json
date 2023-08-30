@@ -1,16 +1,34 @@
 {
-  "include": ["./src/*.ts", "./src/*.d.ts"],
-  "exclude": ["./node_modules/*", "./dist/*"],
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts"
+  ],
+  "exclude": [
+    "./node_modules/*",
+    "./dist/*"
+  ],
   "compilerOptions": {
     "target": "ES2019",
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": true,
     "esModuleInterop": true,
-    "noImplicitOverride": true,
-    "noUnusedLocals": true,
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "useUnknownInCatchVariables": false,
-    "typeRoots": ["./types", "./node_modules/@types"],
+    // "strict": true,
+    // "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ],
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationDir": "lib",
+    "skipLibCheck": true,
+    // "rootDirs": ["src", "demo"]
   }
 }

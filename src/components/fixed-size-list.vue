@@ -1,14 +1,21 @@
-<script setup>
+<script setup lang="ts">
   defineOptions({
     name: 'fixed-size-list'
   })
-  const height = 400;
+  const height: number = 400;
 </script>
 
 <template>
-  <h2>{{ height }}</h2>
+  <div class="container">
+    <h2>{{ height }}</h2>
+  </div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .container {
+    background-color: bisque;
+    h2 {
+      color: #666;
+    }
+  }
 </style>
