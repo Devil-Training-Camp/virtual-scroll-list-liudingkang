@@ -5,10 +5,12 @@
   "description": "a vue virtual-scroll-list",
   "main": "dist/virtual-scroll-list.umd.js",
   "module": "dist/virtual-scroll-list.esm.js",
+  "types": "dist/src/index.d.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c ./build/rollup.prod.config.js"
+    "build": "rollup -c ./build/rollup.prod.config.js",
+    "dev": "rollup -wc ./build/rollup.dev.config.js"
   },
   "engines": {
     "node": ">=16.14.2"
@@ -18,7 +20,10 @@
     "vue3",
     "virtual-scroll-list"
   ],
-  "author": "461252486@qq.com",
+  "author": {
+    "name": "grey-coat",
+    "email": "461252486@qq.com"
+  },
   "license": "ISC",
   "peerDependencies": {
     "vue": "^3.3.4"
@@ -36,7 +41,10 @@
     "cssnano": "^6.0.1",
     "postcss": "^8.4.28",
     "rollup": "^3.28.1",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-serve": "^2.0.2",
     "rollup-plugin-typescript2": "^0.35.0",
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.66.1",

@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import del from 'rollup-plugin-delete';
 // import typescript from '@rollup/plugin-typescript';
 import typescript from 'rollup-plugin-typescript2';
 import PluginVue from 'rollup-plugin-vue';
@@ -16,5 +17,6 @@ export default {
     }),
     typescript(), // @rollup/plugin-typescript 会报错
     json(), // 让 rollup 能够导入 json
+    del({ targets: 'dist/*' }), // 每次 build 之前删除 dist
   ]
 }

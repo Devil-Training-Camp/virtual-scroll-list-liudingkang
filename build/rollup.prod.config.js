@@ -11,16 +11,18 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      name: 'virtualScrollList',
+      name: 'VirtualScrollList',
       format: 'umd',
       file: 'dist/virtual-scroll-list.umd.js',
       globals: {
         vue: 'Vue'
-      }
+      },
+      exports: 'named' // 消除 export named 和 export default 同时存在警告
     },
     {
       format: 'es',
-      file: 'dist/virtual-scroll-list.esm.js'
+      file: 'dist/virtual-scroll-list.esm.js',
+      exports: 'named'
     }
   ],
   plugins: [
