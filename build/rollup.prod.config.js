@@ -22,7 +22,7 @@ export default {
     {
       format: 'es',
       file: 'dist/virtual-scroll-list.esm.js',
-      exports: 'named'
+      exports: 'auto'
     }
   ],
   plugins: [

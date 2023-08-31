@@ -19,15 +19,15 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     // "strict": true,
-    // "noUnusedLocals": true,
+    "noUnusedLocals": true,
     "noImplicitThis": true,
     "typeRoots": [
-      "./types",
       "./node_modules/@types"
     ],
     "isolatedModules": true,
     "declaration": true,
-    "declarationDir": "lib",
+    "outDir": "./dist",
+    "declarationDir": "./dist/types",
     "skipLibCheck": true,
     // "rootDirs": ["src", "demo"]
   }

@@ -15,7 +15,11 @@ export default {
     PluginVue({ // 默认支持 scss
       exclude: ['node_modules/**']
     }),
-    typescript(), // @rollup/plugin-typescript 会报错
+    typescript({
+      verbosity: 2,
+      check: false, // build 报错
+      useTsconfigDeclarationDir: true, // 使用 tsconfig.json 中的 declarationDir，而不是依据 output.file
+    }), // @rollup/plugin-typescript 会报错
     json(), // 让 rollup 能够导入 json
     del({ targets: 'dist/*' }), // 每次 build 之前删除 dist
   ]

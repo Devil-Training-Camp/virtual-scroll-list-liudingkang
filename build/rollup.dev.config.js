@@ -19,6 +19,7 @@ export default {
     serve({
       // open: true,
       openPage: '/demo/index.html',
+      port: 8080
     }),
     livereload({
       watch: 'dist',
