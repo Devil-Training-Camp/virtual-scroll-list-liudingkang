@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineOptions({
-    name: 'fixed-size-list'
-  })
+    name: 'FixedSizeList',
+  });
   const height: number = 400;
 </script>
 
