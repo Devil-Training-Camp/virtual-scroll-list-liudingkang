@@ -1,6 +1,3 @@
 {
-  "src/**/*.{js,vue,ts}": [
-    "pnpm run link:fix",
-    "git add"
-  ]
+  "src/**/*.{js,vue,ts}": ["eslint --fix"]
 }

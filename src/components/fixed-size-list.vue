@@ -14,6 +14,7 @@
 <style scoped lang="scss">
   .container {
     background-color: bisque;
+
     h2 {
       color: #666;
     }
