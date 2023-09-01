@@ -5,3 +5,4 @@ build
 .husky
 .vscode
 .github
+*.d.ts
