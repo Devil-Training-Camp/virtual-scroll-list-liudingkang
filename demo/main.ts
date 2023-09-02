@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+import { createApp } from 'vue';
 import App from './App.vue';
 import VirtualScrollList from '../src/index';
 const app = createApp(App);

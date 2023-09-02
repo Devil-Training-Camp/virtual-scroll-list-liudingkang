@@ -10,24 +10,24 @@ export default {
     format: 'umd',
     file: 'dist/main.js',
     globals: {
-      vue: 'Vue'
-    }
+      vue: 'Vue',
+    },
   },
   plugins: [
     ...base.plugins,
     postcss(),
     serve({
-      // open: true,
+      open: true,
       openPage: '/demo/index.html',
-      port: 8080
+      port: 8080,
     }),
     livereload({
       watch: 'dist',
-      delay: 300
-    })
+      delay: 300,
+    }),
   ],
   watch: {
-    exclude: 'node_modules/**'
+    exclude: 'node_modules/**',
   },
-  external: ['vue']
-}
+  external: ['vue'],
+};

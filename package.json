@@ -1,12 +1,15 @@
 {
   "name": "virtual-scroll-list-liudingkang",
   "version": "1.0.0",
-  "private": "false",
+  "private": false,
   "description": "a vue virtual-scroll-list",
   "main": "dist/virtual-scroll-list.umd.js",
   "module": "dist/virtual-scroll-list.esm.js",
   "types": "dist/types/src/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c ./build/rollup.prod.config.js",
@@ -25,6 +28,11 @@
     "vue3",
     "virtual-scroll-list"
   ],
+  "homepage": "https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang"
+  },
   "author": {
     "name": "grey-coat",
     "email": "461252486@qq.com"
