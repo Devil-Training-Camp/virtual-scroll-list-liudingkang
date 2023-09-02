@@ -1,0 +1,16 @@
+{
+  "editor.codeActionsOnSave": {
+    // 保存时干点啥
+    "source.fixAll": false, // fix all
+    "source.fixAll.eslint": true, // eslint 处理的文件 fixall
+    "source.fixAll.stylelint": true // stylelint 处理的文件 fixall
+  },
+  "editor.formatOnSave": true, // 自动保存
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // 默认格式化工具
+  "editor.tabSize": 2,
+  // "prettier.configPath": ".prettierrc.cjs",
+  // "stylelint.configFile": ".stylelintrc.cjs",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // vue 文件默认格式化方式 和 volar 冲突
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "include": ["**/*.ts", "**/*.d.ts"],
+  "exclude": ["./node_modules/*", "./dist/*"],
+  "compilerOptions": {
+    "target": "ES2019",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    // "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "typeRoots": ["./node_modules/@types"],
+    "isolatedModules": true,
+    "declaration": true,
+    "outDir": "./dist",
+    "declarationDir": "./dist/types",
+    "skipLibCheck": true
+    // "rootDirs": ["src", "demo"]
+  }
+}
