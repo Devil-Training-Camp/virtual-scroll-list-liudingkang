@@ -15,29 +15,29 @@ export default {
       format: 'umd',
       file: 'dist/virtual-scroll-list.umd.js',
       globals: {
-        vue: 'Vue'
+        vue: 'Vue',
       },
-      exports: 'named' // 消除 export named 和 export default 同时存在警告
+      exports: 'named', // 消除 export named 和 export default 同时存在警告
     },
     {
       format: 'es',
       file: 'dist/virtual-scroll-list.esm.js',
-      exports: 'auto'
-    }
+      exports: 'auto',
+    },
   ],
   plugins: [
     ...base.plugins,
     babel({
-      exclude: ['node_modules/**']
+      exclude: ['node_modules/**'],
     }),
-    terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
+    // terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
     postcss({
       plugins: [
         autoprefixer(), // 依据 browserlist 自动加浏览器私有前缀
-        cssnanoPlugin() // 压缩 css
+        cssnanoPlugin(), // 压缩 css
       ],
-      extract: 'virtual-scroll-list.css' // 导出 css 为单文件
-    })
+      extract: 'virtual-scroll-list.css', // 导出 css 为单文件
+    }),
   ],
-  external: ['vue']
-}
+  external: ['vue'],
+};
