@@ -7,5 +7,8 @@ import type { App } from 'vue';
 const install = (app: App) => {
   app.component('FixedSizeList', FixedSizeList);
 };
+
+const p = new Promise(() => {});
+console.log(p);
 export { version, FixedSizeList };
 export default install;

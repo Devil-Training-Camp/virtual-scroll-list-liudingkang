@@ -29,6 +29,9 @@ export default {
     ...base.plugins,
     babel({
       exclude: ['node_modules/**'],
+      babelHelpers: 'runtime',
+      extensions: ['.js', '.ts'],
+      // configFile: fileURLToPath(new URL('.babelrc', import.meta.url)),
     }),
     // terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
     postcss({
