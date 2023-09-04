@@ -3,6 +3,8 @@
     name: 'FixedSizeList',
   });
   const height: number = 400;
+  const p = new Promise(() => {});
+  console.log(p);
 </script>
 
 <template>
