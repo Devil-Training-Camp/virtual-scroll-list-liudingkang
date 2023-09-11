@@ -3,6 +3,7 @@ import terser from '@rollup/plugin-terser';
 import autoprefixer from 'autoprefixer';
 import cssnanoPlugin from 'cssnano';
 import postcss from 'rollup-plugin-postcss';
+import postcssPresetEnv from 'postcss-preset-env';
 
 import base from './rollup.base.config.js';
 
@@ -35,8 +36,9 @@ export default {
     // terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
     postcss({
       plugins: [
-        autoprefixer(), // 依据 browserlist 自动加浏览器私有前缀
-        cssnanoPlugin(), // 压缩 css
+        // autoprefixer(), // 依据 browserlist 自动加浏览器私有前缀
+        postcssPresetEnv(),
+        // cssnanoPlugin(), // 压缩 css
       ],
       extract: 'virtual-scroll-list.css', // 导出 css 为单文件
     }),

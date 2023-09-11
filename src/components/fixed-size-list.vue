@@ -18,7 +18,8 @@
     background-color: bisque;
 
     h2 {
-      color: #666;
+      color: #13123321;
+      user-select: auto;
     }
   }
 </style>
