@@ -18,7 +18,9 @@
     background-color: bisque;
 
     h2 {
+      width: 100%;
       color: #13123321;
+      background-color: linen;
       user-select: auto;
     }
   }

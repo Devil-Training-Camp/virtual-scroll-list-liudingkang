@@ -85,7 +85,6 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^6.0.3",
     "stylelint-prettier": "^4.0.2",
-    "stylelint-scss": "^5.1.0",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
     "vue": "^3.3.4",

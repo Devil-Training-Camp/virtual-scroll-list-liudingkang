@@ -12,5 +12,6 @@
   // "stylelint.configFile": ".stylelintrc.cjs",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode" // vue 文件默认格式化方式 和 volar 冲突
-  }
+  },
+  "stylelint.validate": ["scss", "css", "vue"]
 }
