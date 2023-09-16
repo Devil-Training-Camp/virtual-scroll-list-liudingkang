@@ -8,7 +8,12 @@
 </script>
 
 <template>
-  <div class="container">
+  <div
+    class="container"
+    :style="{
+      color: 'red',
+    }"
+  >
     <h2>{{ height }}</h2>
   </div>
 </template>
