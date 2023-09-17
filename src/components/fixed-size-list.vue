@@ -27,7 +27,6 @@
       font-size: 15px;
       color: #13123321;
       background-color: linen;
-      user-select: auto;
     }
   }
 </style>
