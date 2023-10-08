@@ -1,5 +1,12 @@
 
 
+## [6.0.1](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.0.0...v6.0.1) (2023-10-08)
+
+
+### 📝 Documentation | 文档
+
+* **readme.md:** 添加 readme 文件 ([6607e24](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/6607e24a5c985ee0b1e13fd764038607a66e22f1))
+
 ## [6.0.0](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v1.0.4-alpha.3...v6.0.0) (2023-09-27)
 
 
