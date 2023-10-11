@@ -1,5 +1,12 @@
 
 
+## [6.0.3-alpha.2.0](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.0.2...v6.0.3-alpha.2.0) (2023-10-11)
+
+
+### 👷‍ Build System | 构建
+
+* release v6.0.3-alpha.1.0 ([513e930](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/513e930211e92ff7f95664db1012dca77273aaf0))
+
 ## [6.0.3-alpha.1.0](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.0.2...v6.0.3-alpha.1.0) (2023-10-11)
 
 ## [6.0.2](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.0.2-alpha.0...v6.0.2) (2023-10-11)
