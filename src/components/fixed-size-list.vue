@@ -4,7 +4,7 @@
   });
   const height: number = 400;
   const p = new Promise(() => {});
-  console.log(p);
+  console.log(11, p);
 </script>
 
 <template>

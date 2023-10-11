@@ -5,7 +5,7 @@ import base from './rollup.base.config.js';
 
 export default {
   ...base,
-  input: 'demo/main.ts',
+  input: 'demo/main.js',
   output: {
     format: 'umd',
     file: 'dist/main.js',

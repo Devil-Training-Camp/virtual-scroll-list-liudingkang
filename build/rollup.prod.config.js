@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer';
 import cssnanoPlugin from 'cssnano';
 import postcss from 'rollup-plugin-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
+import esbuild from 'rollup-plugin-esbuild';
 
 import base from './rollup.base.config.js';
 
@@ -28,12 +29,16 @@ export default {
   ],
   plugins: [
     ...base.plugins,
-    babel({
-      exclude: ['node_modules/**'],
-      babelHelpers: 'runtime',
-      extensions: ['.js', '.ts'],
-    }),
+    // babel({
+    //   exclude: ['node_modules/**'],
+    //   babelHelpers: 'runtime',
+    //   extensions: ['.ts', '.js'],
+    // }),
     // terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
+    esbuild({
+      include: /\.[tj]s?$/,
+      // minify: true,
+    }),
     postcss({
       plugins: [
         // autoprefixer(), // 依据 browserlist 自动加浏览器私有前缀
