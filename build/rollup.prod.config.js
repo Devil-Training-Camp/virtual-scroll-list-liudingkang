@@ -4,7 +4,7 @@ import autoprefixer from 'autoprefixer';
 import cssnanoPlugin from 'cssnano';
 import postcss from 'rollup-plugin-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
-import esbuild from 'rollup-plugin-esbuild';
+import typescript from 'rollup-plugin-typescript2';
 
 import base from './rollup.base.config.js';
 
@@ -29,21 +29,22 @@ export default {
   ],
   plugins: [
     ...base.plugins,
-    // babel({
-    //   exclude: ['node_modules/**'],
-    //   babelHelpers: 'runtime',
-    //   extensions: ['.ts', '.js'],
-    // }),
-    // terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
-    esbuild({
-      include: /\.[tj]s?$/,
-      // minify: true,
+    typescript({
+      // verbosity: 2,
+      // check: false,
+      useTsconfigDeclarationDir: true, // 使用 tsconfig.json 中的 declarationDir，而不是依据 output.file
+    }), // @rollup/plugin-typescript 会报错
+    babel({
+      exclude: ['node_modules/**'],
+      babelHelpers: 'runtime',
+      extensions: ['.ts', '.js'],
     }),
+    terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
     postcss({
       plugins: [
-        // autoprefixer(), // 依据 browserlist 自动加浏览器私有前缀
+        autoprefixer(), // 依据 browserlist 自动加浏览器私有前缀
         postcssPresetEnv(),
-        // cssnanoPlugin(), // 压缩 css
+        cssnanoPlugin(), // 压缩 css
       ],
       extract: 'virtual-scroll-list.css', // 导出 css 为单文件
     }),

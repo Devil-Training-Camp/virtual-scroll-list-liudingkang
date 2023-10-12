@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "component.d.ts"], // 包含的文件
+  "include": ["demo/**/*.ts", "src/**/*.ts", "src/**/*.d.ts", "component.d.ts"], // 包含的文件
   "exclude": ["./node_modules/*", "./dist/*"], // 排除的文件
   "compilerOptions": {
     "target": "ES2019", // 编译后的目标

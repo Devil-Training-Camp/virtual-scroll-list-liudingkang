@@ -5,7 +5,7 @@
   "description": "a vue virtual-scroll-list",
   "main": "dist/virtual-scroll-list.umd.js",
   "module": "dist/virtual-scroll-list.esm.js",
-  "types": "dist/types/src/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "type": "module",
   "files": [
     "dist"
