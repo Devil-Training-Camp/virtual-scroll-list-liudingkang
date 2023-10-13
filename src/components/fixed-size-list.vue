@@ -5,10 +5,11 @@
   const height: number = 400;
   const p = new Promise(() => {});
   console.log(1235545, p);
-  const test = (s: name) => {
+  const test = (s: number) => {
     console.log('test: ', s);
   };
   test();
+  // const ss = 43;
 </script>
 
 <template>

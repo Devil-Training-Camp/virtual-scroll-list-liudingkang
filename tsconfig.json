@@ -1,5 +1,5 @@
 {
-  "include": ["demo/**/*.ts", "src/**/*.ts", "src/**/*.d.ts", "component.d.ts"], // 包含的文件
+  "include": ["demo/**/*.ts", "src/**/*.ts", "src/**/*.d.ts", "component.d.ts", "src/**/*.vue"], // 包含的文件
   "exclude": ["./node_modules/*", "./dist/*"], // 排除的文件
   "compilerOptions": {
     "target": "ES2019", // 编译后的目标
@@ -10,7 +10,7 @@
     "resolveJsonModule": true, // 支持解析 json 模块
     "strict": true, // 严格类型检测
     // "noUnusedLocals": true, // 在未读取局部变量时报错。
-    "noImplicitAny": false,
+    // "noImplicitAny": false,
     // "noImplicitThis": true, // 当`this`具有类型`any`时，启用错误报告
     "typeRoots": ["./node_modules/@types"], // 指定一组类型文件夹
     "isolatedModules": true, // 确保每个文件都可以安全地传输，而不依赖于其他导入
