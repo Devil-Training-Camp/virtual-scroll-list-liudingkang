@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  const test = (s: name) => {
-    console.log('test: ', s);
-  };
-  test();
+  // const test = (s: number) => {
+  //   console.log('test: ', s);
+  // };
+  // test();
 </script>
 
 <template>

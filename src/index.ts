@@ -10,13 +10,5 @@ export * from './components/fixed-size-list.vue';
 const install = (app: App) => {
   app.component('FixedSizeList', FixedSizeList);
 };
-// const ss = 43;
-// const test = (s: name) => {
-//   console.log('test: ', s);
-// };
-// test();
-const d = Reflect.deleteProperty;
-
-console.log(d);
 export { version, FixedSizeList };
 export default install;

@@ -2,14 +2,19 @@
   defineOptions({
     name: 'FixedSizeList',
   });
+  const props = defineProps<{
+    test: string;
+  }>();
+
+  console.log(props);
   const height: number = 400;
-  const p = new Promise(() => {});
-  console.log(1235545, p);
-  const test = (s: number) => {
-    console.log('test: ', s);
+  interface Persion {
+    name: string;
+  }
+  const person: Persion = {
+    name: '32',
   };
-  test();
-  // const ss = 43;
+  console.log(person);
 </script>
 
 <template>

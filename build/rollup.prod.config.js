@@ -39,7 +39,7 @@ export default {
       babelHelpers: 'runtime',
       extensions: ['.ts', '.js'],
     }),
-    terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
+    // terser(), // 压缩 es6+ 代码 / uglify 压缩 es5
     postcss({
       plugins: [
         autoprefixer(), // 依据 browserlist 自动加浏览器私有前缀

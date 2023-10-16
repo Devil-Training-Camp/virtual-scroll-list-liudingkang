@@ -5,14 +5,14 @@
   "description": "a vue virtual-scroll-list",
   "main": "dist/virtual-scroll-list.umd.js",
   "module": "dist/virtual-scroll-list.esm.js",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/virtual-scroll-list.d.ts",
   "type": "module",
   "files": [
     "dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c ./build/rollup.prod.config.js",
+    "build": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js",
     "dev": "rollup -wc ./build/rollup.dev.config.js",
     "eslint": "eslint --ext .vue,.ts,.js src",
     "eslint:fix": "eslint --ext .vue,.ts,.js src --fix",
@@ -96,7 +96,8 @@
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
     "vue": "^3.3.4",
-    "vue-eslint-parser": "^9.3.2"
+    "vue-eslint-parser": "^9.3.2",
+    "vue-tsc": "^1.8.19"
   },
   "dependencies": {
     "core-js": "^3.33.0"
