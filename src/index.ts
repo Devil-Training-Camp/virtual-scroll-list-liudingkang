@@ -1,14 +1,18 @@
-import { version } from '../package.json';
-import './assets/common.css';
-import './assets/reset.css';
-import './assets/base.scss';
-import FixedSizeList from './components/fixed-size-list.vue';
-import type { App } from 'vue';
+import type { App, Component } from 'vue';
+import type { WithInstall } from './utils';
 
-export * from './components/fixed-size-list.vue';
+import FixedSizeList from './components/fixed-size-list';
+
+const components: Component[] = [FixedSizeList];
 
 const install = (app: App) => {
-  app.component('FixedSizeList', FixedSizeList);
+  components.forEach((component: Component) => {
+    (component as WithInstall<Component>).install(app);
+  });
 };
-export { version, FixedSizeList };
-export default install;
+
+export { FixedSizeList };
+export default {
+  install,
+  FixedSizeList,
+};

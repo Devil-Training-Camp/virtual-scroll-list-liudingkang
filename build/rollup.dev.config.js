@@ -28,8 +28,8 @@ export default {
     }),
     postcss(),
     serve({
-      // open: true,
-      openPage: '/demo/index.html',
+      open: true,
+      // openPage: '/demo/index.html',
       port: 8080,
     }),
     livereload({

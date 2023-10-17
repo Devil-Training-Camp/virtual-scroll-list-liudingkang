@@ -1,3 +1,3 @@
-export function camelize(str: string) {
-  return str;
+export function camelize(str: string): string {
+  return str.toLocaleLowerCase();
 }

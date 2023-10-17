@@ -5,28 +5,40 @@ import cssnanoPlugin from 'cssnano';
 import postcss from 'rollup-plugin-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import typescript from 'rollup-plugin-typescript2';
+import { getComponentEntries } from './utils.js';
+
+console.log(getComponentEntries('src/components'));
 
 import base from './rollup.base.config.js';
 
 export default {
   ...base,
-  input: 'src/index.ts',
-  output: [
-    {
-      name: 'VirtualScrollList',
-      format: 'umd',
-      file: 'dist/virtual-scroll-list.umd.js',
-      globals: {
-        vue: 'Vue',
-      },
-      exports: 'named', // 消除 export named 和 export default 同时存在警告
-    },
-    {
-      format: 'es',
-      file: 'dist/virtual-scroll-list.esm.js',
-      exports: 'auto',
-    },
-  ],
+  input: {
+    ...getComponentEntries('src/components'),
+    // 'virtual-scroll-list': 'src/index.ts',
+  },
+  output: {
+    format: 'es',
+    dir: 'dist/lib',
+    entryFileNames: '[name]/[name].js',
+    exports: 'auto',
+  },
+  // output: [
+  //   {
+  //     name: 'VirtualScrollList',
+  //     format: 'umd',
+  //     file: 'dist/virtual-scroll-list.umd.js',
+  //     globals: {
+  //       vue: 'Vue',
+  //     },
+  //     exports: 'named', // 消除 export named 和 export default 同时存在警告
+  //   },
+  //   {
+  //     format: 'es',
+  //     file: 'dist/virtual-scroll-list.esm.js',
+  //     exports: 'auto',
+  //   },
+  // ],
   plugins: [
     ...base.plugins,
     typescript({
