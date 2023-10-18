@@ -19,7 +19,7 @@
 
 <template>
   <div
-    class="container"
+    class="container test"
     :style="{
       color: 'red',
     }"
@@ -31,12 +31,9 @@
 <style scoped lang="scss">
   .container {
     background-color: bisque;
+  }
 
-    h2 {
-      width: 100%;
-      font-size: 15px;
-      color: #13123321;
-      background-color: linen;
-    }
+  .test {
+    color: pink;
   }
 </style>

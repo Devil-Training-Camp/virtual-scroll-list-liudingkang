@@ -1,29 +1,12 @@
 <script setup lang="ts">
   defineOptions({
-    name: 'FixedSizeList',
+    name: 'DynamicList',
   });
-  const props = defineProps<{
-    test?: string;
-  }>();
-
-  console.log(props);
   const height: number = 400;
-  interface Persion {
-    name: string;
-  }
-  const person: Persion = {
-    name: '32',
-  };
-  console.log(person, 34);
 </script>
 
 <template>
-  <div
-    class="container"
-    :style="{
-      color: 'red',
-    }"
-  >
+  <div class="container">
     <h2>{{ height }}</h2>
   </div>
 </template>

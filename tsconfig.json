@@ -14,9 +14,9 @@
     // "noImplicitThis": true, // 当`this`具有类型`any`时，启用错误报告
     "typeRoots": ["./node_modules/@types"], // 指定一组类型文件夹
     "isolatedModules": true, // 确保每个文件都可以安全地传输，而不依赖于其他导入
-    "declaration": true, // 自动生成声明文件
+    // "declaration": true, // 自动生成声明文件
     "outDir": "./dist", // 输出文件夹
-    "declarationDir": "./dist/types", // 输出时声明文件的文件夹
+    // "declarationDir": "./dist", // 输出时声明文件的文件夹
     "skipLibCheck": true, // 跳过类型检查 .d.ts类型脚本中包含的ts文件
     "allowJs": true // 允许 js
     // "rootDirs": ["src", "demo"]

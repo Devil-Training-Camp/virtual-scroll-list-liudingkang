@@ -83,6 +83,7 @@
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-serve": "^2.0.2",
+    "rollup-plugin-styles": "^4.0.0",
     "rollup-plugin-typescript2": "^0.35.0",
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.69.2",
