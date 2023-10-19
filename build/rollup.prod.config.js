@@ -10,19 +10,19 @@ import del from 'rollup-plugin-delete';
 
 import base from './rollup.base.config.js';
 import { getComponentEntries } from './utils.js';
-
+console.log(getComponentEntries('src/packages'));
 export default [
   {
     ...base,
-    input: {
-      ...getComponentEntries('src/packages'),
-    },
-    output: {
-      format: 'es',
-      dir: 'dist',
-      entryFileNames: 'packages/[name]/index.js',
-      assetFileNames: 'packages/[name]/index[extname]',
-    },
+    input: getComponentEntries('src/packages'),
+    output: [
+      {
+        format: 'es',
+        dir: 'dist',
+        entryFileNames: '[name].mjs',
+        assetFileNames: '[name][extname]',
+      },
+    ],
     plugins: [
       ...base.plugins,
       del({ targets: 'dist/*' }), // 每次 build 之前删除 dist
