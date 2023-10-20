@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js",
+    "build": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js && tsc --project ./tsconfig.declaration.json",
     "dev": "rollup -wc ./build/rollup.dev.config.js",
     "eslint": "eslint --ext .vue,.ts,.js src",
     "eslint:fix": "eslint --ext .vue,.ts,.js src --fix",

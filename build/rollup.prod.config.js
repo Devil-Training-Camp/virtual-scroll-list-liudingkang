@@ -10,16 +10,27 @@ import del from 'rollup-plugin-delete';
 
 import base from './rollup.base.config.js';
 import { getComponentEntries } from './utils.js';
-console.log(getComponentEntries('src/packages'));
+
 export default [
   {
     ...base,
-    input: getComponentEntries('src/packages'),
+    input: getComponentEntries(),
+    output: [
+      {
+        dir: 'dist',
+        entryFileNames: '[name].js',
+        assetFileNames: '[name][extname]',
+      },
+    ],
+  },
+  {
+    ...base,
+    input: getComponentEntries(),
     output: [
       {
         format: 'es',
         dir: 'dist',
-        entryFileNames: '[name].mjs',
+        entryFileNames: '[name].js',
         assetFileNames: '[name][extname]',
       },
     ],

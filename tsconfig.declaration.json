@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["dist/**/*", "component.d.ts"], // 包含的文件
+  "exclude": ["node_modules", "demo/**/*", "src/**/*"], // 排除的文件
+  "compilerOptions": {
+    "declaration": true, // 自动生成声明文件
+    "declarationDir": "dist", // 输出时声明文件的文件夹
+    "emitDeclarationOnly": true // 只输出声明文件
+    // "typeRoots": ["./node_modules/@types"], // 指定一组类型文件夹
+  }
+}
