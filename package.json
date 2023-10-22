@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js && tsc --project ./tsconfig.declaration.json",
+    "build": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js && tsc -p ./tsconfig.declaration.json -declarationDir dist/es  && tsc -p ./tsconfig.declaration.json -declarationDir dist/lib",
     "dev": "rollup -wc ./build/rollup.dev.config.js",
     "eslint": "eslint --ext .vue,.ts,.js src",
     "eslint:fix": "eslint --ext .vue,.ts,.js src --fix",
@@ -95,7 +95,6 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^6.0.3",
     "stylelint-prettier": "^4.0.2",
-    "tslib": "^2.6.2",
     "typescript": "^5.2.2",
     "vue": "^3.3.4",
     "vue-eslint-parser": "^9.3.2",

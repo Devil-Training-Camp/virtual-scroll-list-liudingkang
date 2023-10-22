@@ -1,6 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import {glob} from 'glob'
+import { glob } from 'glob';
 
 // 解析到根路径函数
 const resolve = dir => {
@@ -10,14 +10,13 @@ const resolve = dir => {
 };
 
 // 获取导出入口
-export function getComponentEntries(p) {
+export function getComponentEntries() {
   return Object.fromEntries(
-		glob.sync('src/**/*.ts').map(file => [
-			path.relative(
-				'src',
-				file.slice(0, file.length - path.extname(file).length)
-			),
-			resolve(file)
-		])
-  )
+    glob
+      .sync('src/**/*.ts')
+      .map(file => [
+        path.relative('src', file.slice(0, file.length - path.extname(file).length)),
+        resolve(file),
+      ]),
+  );
 }
