@@ -5,7 +5,7 @@ module.exports = {
   },
   // 扩展配置文件
   extends: [
-    // 'eslint:recommended', // es
+    'eslint:recommended', // es
     'plugin:prettier/recommended', // 把 prettier rule 当做 eslint rule 来执行
     'plugin:vue/vue3-recommended', // vue
     'plugin:@typescript-eslint/recommended', // ts

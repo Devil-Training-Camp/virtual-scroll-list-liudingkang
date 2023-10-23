@@ -1,7 +1,11 @@
 node_modules
 dist
 # build
+
 .husky
 .vscode
 .github
+
+
 *.d.ts
+.eslintrc.cjs

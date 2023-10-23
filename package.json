@@ -3,12 +3,13 @@
   "version": "6.0.3-alpha.2.0",
   "private": false,
   "description": "a vue virtual-scroll-list",
-  "main": "dist/virtual-scroll-list.umd.js",
-  "module": "dist/virtual-scroll-list.esm.js",
-  "types": "dist/virtual-scroll-list.d.ts",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.mjs",
+  "types": "dist/lib/index.d.ts",
   "type": "module",
   "files": [
-    "dist"
+    "dist/es",
+    "dist/lib"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

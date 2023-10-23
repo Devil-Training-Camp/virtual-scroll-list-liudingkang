@@ -1,5 +1,6 @@
 import type { App, Component } from 'vue';
 import type { WithInstall } from './utils';
+import './assets/base.scss';
 
 import FixedSizeList from './packages/fixed-size-list';
 import DynamicList from './packages/dynamic-list';
@@ -15,6 +16,4 @@ const install = (app: App) => {
 export { FixedSizeList, DynamicList };
 export default {
   install,
-  FixedSizeList,
-  DynamicList,
 };
