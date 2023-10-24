@@ -1,19 +1,20 @@
-import type { App, Component } from 'vue';
+import type { Component } from 'vue';
 import type { WithInstall } from './utils';
-import './assets/base.scss';
+import './style/base.scss';
 
-import FixedSizeList from './packages/fixed-size-list';
-import DynamicList from './packages/dynamic-list';
+import { FixedSizeList } from './packages/fixed-size-list';
+import { DynamicList } from './packages/dynamic-list';
 
 const components: Component[] = [FixedSizeList, DynamicList];
 
-const install = (app: App) => {
+const install = app => {
   components.forEach((component: Component) => {
     (component as WithInstall<Component>).install(app);
   });
 };
 
-export { FixedSizeList, DynamicList };
+export * from './packages/fixed-size-list';
+export * from './packages/dynamic-list';
 export default {
   install,
 };

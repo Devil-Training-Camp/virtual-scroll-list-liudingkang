@@ -8,7 +8,8 @@ module.exports = {
   singleQuote: true, // 单引号
   tabWidth: 2, // tab 大小
   useTabs: false, // 使用 空格缩进而不是 tab
-  trailingComma: 'all', // 多行打印尾随逗号
+  // 8.尾部逗号设置，es5是尾部逗号兼容es5，none就是没有尾部逗号，all是指所有可能的情况，需要node8和es2017以上的环境。（trailingComma: "<es5|none|all>"）
+  trailingComma: 'all',
   vueIndentScriptAndStyle: true, // 允许vue中的script及style 的标签缩进
   singleAttributePerLine: true, // 每个元素属性一行
 };

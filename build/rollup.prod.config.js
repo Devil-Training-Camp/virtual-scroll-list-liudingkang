@@ -32,9 +32,7 @@ export default [
     plugins: [
       ...base.plugins,
       del({ targets: 'dist/*' }), // 每次 build 之前删除 dist
-      typescript({
-        // useTsconfigDeclarationDir: true, // 使用 tsconfig.json 中的 declarationDir，而不是依据 output.file
-      }), // @rollup/plugin-typescript 会报错
+      typescript(), // @rollup/plugin-typescript 会报错
       babel({
         exclude: ['node_modules/**'],
         babelHelpers: 'runtime',
