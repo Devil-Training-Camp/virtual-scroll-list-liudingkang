@@ -10,13 +10,12 @@ const resolve = dir => {
 };
 
 // 获取导出入口
-export function getComponentEntries() {
+export async function getFileEntries(dir, extension) {
+  const entries = await glob(`${dir}/**/*.${extension}`);
   return Object.fromEntries(
-    glob
-      .sync('src/**/*.ts')
-      .map(file => [
-        path.relative('src', file.slice(0, file.length - path.extname(file).length)),
-        resolve(file),
-      ]),
+    entries.map(file => [
+      path.relative('src', file.slice(0, file.length - path.extname(file).length)),
+      resolve(file),
+    ]),
   );
 }

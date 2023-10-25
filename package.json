@@ -14,6 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js && tsc -p ./tsconfig.declaration.json -declarationDir dist/es  && tsc -p ./tsconfig.declaration.json -declarationDir dist/lib",
+    "build1": "node ./build/build.js",
     "dev": "rollup -wc ./build/rollup.dev.config.js",
     "eslint": "eslint --ext .vue,.ts,.js src",
     "eslint:fix": "eslint --ext .vue,.ts,.js src --fix",
@@ -88,6 +89,7 @@
     "rollup-plugin-styles": "^4.0.0",
     "rollup-plugin-typescript2": "^0.35.0",
     "rollup-plugin-vue": "^6.0.0",
+    "rslog": "^1.1.0",
     "sass": "^1.69.2",
     "stylelint": "^15.10.3",
     "stylelint-config-prettier": "^9.0.5",

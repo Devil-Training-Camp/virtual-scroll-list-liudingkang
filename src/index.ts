@@ -1,6 +1,6 @@
 import type { Component } from 'vue';
 import type { WithInstall } from './utils';
-import './style/base.scss';
+import './style';
 
 import { FixedSizeList } from './packages/fixed-size-list';
 import { DynamicList } from './packages/dynamic-list';
