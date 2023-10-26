@@ -21,7 +21,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {},
   // 全局变量
-  // global: {
-  //   process: true,
-  // },
+  globals: {
+    process: true,
+  },
 };

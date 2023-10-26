@@ -2,7 +2,8 @@ import { logger } from 'rslog';
 
 import { exec, execSync, spawn } from 'child_process';
 import { CJS_DIR, ES_DIR } from './config.js';
-import { getFileEntries } from './utils.js';
+import { glob } from 'glob';
+import { writeFile } from 'fs/promises';
 
 // 类型检测
 async function check() {
@@ -31,9 +32,18 @@ async function buildTypes() {
 }
 // 生成按需加载样式入口
 async function buildStyleEntries() {
-  // const esEntries = getFileEntries(`${}`, '');
+  // const esEntries = await glob(`${ES_DIR}/packages/+(**)/`);
+  console.log(process.cwd());
+  // for (const entry of esEntries) {
+  //   await writeFile(
+  //     `${entry}/style/index.mjs`,
+  //     `
+  //     import '../../'
+  //   `,
+  //   );
+  // }
 }
-
+buildStyleEntries();
 const tasks = [
   {
     text: 'type check',
