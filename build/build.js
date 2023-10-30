@@ -1,9 +1,10 @@
 import { logger } from 'rslog';
 
-import { exec, execSync, spawn } from 'child_process';
+import { execSync } from 'child_process';
 import { CJS_DIR, ES_DIR } from './config.js';
 import { glob } from 'glob';
 import { writeFile } from 'fs/promises';
+// import { parse } from '@vue/compiler-sfc';
 
 // 类型检测
 async function check() {
@@ -32,16 +33,17 @@ async function buildTypes() {
 }
 // 生成按需加载样式入口
 async function buildStyleEntries() {
-  // const esEntries = await glob(`${ES_DIR}/packages/+(**)/`);
+  const esEntries = await glob(`${ES_DIR}/packages/+(**)/`);
   console.log(process.cwd());
-  // for (const entry of esEntries) {
-  //   await writeFile(
-  //     `${entry}/style/index.mjs`,
-  //     `
-  //     import '../../'
-  //   `,
-  //   );
-  // }
+  for (const entry of esEntries) {
+    await writeFile(
+      `${entry}/style/index.mjs`,
+      `
+      import '../../'
+    `,
+    );
+  }
+  // const source = await readFile('src/packages/compose-list/compose-list.vue', 'utf-8');
 }
 buildStyleEntries();
 const tasks = [
