@@ -94,6 +94,9 @@ devDependencies:
   glob:
     specifier: ^10.3.10
     version: registry.npmmirror.com/glob@10.3.10
+  hash-sum:
+    specifier: ^2.0.0
+    version: registry.npmmirror.com/hash-sum@2.0.0
   husky:
     specifier: ^8.0.3
     version: registry.npmmirror.com/husky@8.0.3
