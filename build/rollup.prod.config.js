@@ -11,6 +11,15 @@ import del from 'rollup-plugin-delete';
 import base from './rollup.base.config.js';
 import { getFileEntries } from './utils.js';
 import { CJS_DIR, ES_DIR } from './config.js';
+function testPlugin() {
+  return {
+    name: 'my-example', // 此名称将出现在警告和错误中
+    transform(code, id) {
+      console.log(id, code);
+      return code;
+    },
+  };
+}
 
 export default [
   {
@@ -43,6 +52,7 @@ export default [
       }),
       // 压缩 es6+ 代码 / uglify 压缩 es5
       // terser(),
+      testPlugin(),
       styles({
         // 遵从 assetFileNames 路径
         mode: 'extract',

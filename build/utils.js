@@ -19,3 +19,30 @@ export async function getFileEntries(dir, extension) {
     ]),
   );
 }
+export function replaceExt(path, ext = '') {
+  return path.replace(/(.*)\.[^.]*$/, `$1${ext}`);
+}
+// export function parseVuePartRequest(id) {
+//   if (!id.includes('.vue')) return;
+//   const filename = id.substr(0, id.lastIndexOf('.vue') + 4);
+//   const params = getVueMetaFromQuery(id);
+//   if (params === null) return;
+//   return {
+//     filename,
+//     meta: params,
+//   };
+// }
+// export function getVueMetaFromQuery(id) {
+//   const match = GET_QUERY.exec(id);
+//   if (match) {
+//     const query = queryString.parse(match[2]);
+//     if (PARAM_NAME in query) {
+//       const data = Array.isArray(query[PARAM_NAME]) ? query[PARAM_NAME][0] : query[PARAM_NAME];
+//       const [type, index, lang] = data.split('.');
+//       return lang
+//         ? { type, lang, index: parseInt(index) } // styles.0.css
+//         : { type, lang: index }; // script.js
+//     }
+//   }
+//   return null;
+// }

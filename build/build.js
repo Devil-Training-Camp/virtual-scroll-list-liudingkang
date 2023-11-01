@@ -1,10 +1,11 @@
 import { logger } from 'rslog';
-
-import { execSync } from 'child_process';
-import { CJS_DIR, ES_DIR } from './config.js';
 import { glob } from 'glob';
+
+import path from 'path';
+import { execSync } from 'child_process';
+
+import { CJS_DIR, ES_DIR } from './config.js';
 import { compileSfc } from './compiler/complie-sfc.js';
-import { getFileEntries } from './utils.js';
 
 // 类型检测
 async function check() {
@@ -33,23 +34,15 @@ async function buildTypes() {
 }
 // 生成按需加载样式入口
 async function buildStyleEntries() {
-  // const esEntries = await glob(`${ES_DIR}/packages/+(**)/`);
-  // for (const entry of esEntries) {
-  //   await writeFile(
-  //     `${entry}/style/index.mjs`,
-  //     `
-  //     import '../../'
-  //   `,
-  //   );
-  // }
   const sfcEntries = await glob(`src/packages/+(**)/*.vue`);
-  // const fileEntries = getFileEntries();
   for (const filePath of sfcEntries) {
-    await compileSfc(filePath);
+    const dir = path.relative('src', path.dirname(filePath));
+    const esOutputDir = `${ES_DIR}/${dir}`;
+    const cjsOutputDir = `${CJS_DIR}/${dir}`;
+    await compileSfc(filePath, esOutputDir);
+    await compileSfc(filePath, cjsOutputDir);
   }
-  // console.dir(res, { depth: null });
 }
-buildStyleEntries();
 const tasks = [
   {
     text: 'type check',
