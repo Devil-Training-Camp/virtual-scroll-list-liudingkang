@@ -1,8 +1,13 @@
-<script setup lang="ts">
-  defineOptions({
+<script lang="ts">
+  export default {
     name: 'DynamicList',
-  });
-  const height: number = 400;
+    setup() {
+      const height: number = 400;
+      return {
+        height,
+      };
+    },
+  };
 </script>
 
 <template>

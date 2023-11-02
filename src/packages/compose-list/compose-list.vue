@@ -2,11 +2,12 @@
   defineOptions({
     name: 'ComposeList',
   });
-  import '../dynamic-list';
+  import { DynamicList } from '../dynamic-list';
 </script>
 
 <template>
   <DynamicList></DynamicList>
+  <p>4343</p>
 </template>
 
 <style scoped lang="scss">

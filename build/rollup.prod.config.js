@@ -16,7 +16,10 @@ function testPlugin() {
     name: 'my-example', // 此名称将出现在警告和错误中
     transform(code, id) {
       console.log(id, code);
-      return code;
+      return {
+        code: '',
+        map: null,
+      };
     },
   };
 }
@@ -52,7 +55,7 @@ export default [
       }),
       // 压缩 es6+ 代码 / uglify 压缩 es5
       // terser(),
-      testPlugin(),
+      // testPlugin(),
       styles({
         // 遵从 assetFileNames 路径
         mode: 'extract',

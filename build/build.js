@@ -3,10 +3,14 @@ import { glob } from 'glob';
 
 import path from 'path';
 import { execSync } from 'child_process';
+import { copy } from 'fs-extra';
 
-import { CJS_DIR, ES_DIR } from './config.js';
+import { CJS_DIR, ES_DIR, SRC_DIR } from './config.js';
 import { compileSfc } from './compiler/complie-sfc.js';
 
+async function copySource() {
+  await Promise.all([copy(SRC_DIR, ES_DIR)], copy(SRC_DIR, CJS_DIR));
+}
 // 类型检测
 async function check() {
   execSync(`vue-tsc --noEmit`, {
@@ -32,34 +36,45 @@ async function buildTypes() {
     },
   );
 }
-// 生成按需加载样式入口
-async function buildStyleEntries() {
-  const sfcEntries = await glob(`src/packages/+(**)/*.vue`);
-  for (const filePath of sfcEntries) {
-    const dir = path.relative('src', path.dirname(filePath));
-    const esOutputDir = `${ES_DIR}/${dir}`;
-    const cjsOutputDir = `${CJS_DIR}/${dir}`;
-    await compileSfc(filePath, esOutputDir);
-    await compileSfc(filePath, cjsOutputDir);
+// 构建 esm
+async function buildEs() {
+  const sfcEntries = await glob(`${ES_DIR}/packages/+(**)/*.vue`);
+  for (const filePath of sfcEntries.slice(1, 2)) {
+    await compileSfc(filePath, 'esm');
+  }
+}
+// 构建 cjs
+async function buildCjs() {
+  const sfcEntries = await glob(`${CJS_DIR}/packages/+(**)/*.vue`);
+  for (const filePath of sfcEntries.slice(-1)) {
+    await compileSfc(filePath, 'cjs');
   }
 }
 const tasks = [
   {
-    text: 'type check',
-    task: check,
+    text: 'type copy source',
+    task: copySource,
   },
+  // {
+  //   text: 'type check',
+  //   task: check,
+  // },
+  // {
+  //   text: 'build outputs',
+  //   task: buildOutputs,
+  // },
+  // {
+  //   text: 'build types',
+  //   task: buildTypes,
+  // },
   {
-    text: 'build outputs',
-    task: buildOutputs,
+    text: 'build esm',
+    task: buildEs,
   },
-  {
-    text: 'build types',
-    task: buildTypes,
-  },
-  {
-    text: 'build style entries',
-    task: buildStyleEntries,
-  },
+  // {
+  //   text: 'build cjs',
+  //   task: buildCjs,
+  // },
 ];
 
 async function runBuildTasks() {
