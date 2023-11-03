@@ -1,4 +1,3 @@
-import { readFile, writeFile } from 'fs/promises';
 import {
   parse,
   compileStyle,
@@ -6,21 +5,40 @@ import {
   compileScript as compileSfcScript,
 } from 'vue/compiler-sfc';
 import hash_sum from 'hash-sum';
-import path from 'path';
+import { outputFile, readFile } from 'fs-extra';
 
 import { compileSass } from './comlie-sass.js';
 import { replaceExt } from '../utils.js';
+import { compilerScript } from './complie-script.js';
 
 const SFC_COMPONENT_NAME = '__SFC__';
+const SFC_RENDER_NAME = '__render__';
 const SFC_DECLAREION = `const ${SFC_COMPONENT_NAME} =`;
+const SFC_EXPORT = `export default`;
 
-function injectRender(script, render) {}
+// 将 template 编译后的 render 函数注入 script 中，同时替换名称
+function injectRender(script, render) {
+  script = script.trim();
+  render = render.replace(`export function render`, `function ${SFC_RENDER_NAME}`);
+  script = script.replace(`${SFC_DECLAREION}`, `${render}\n${SFC_DECLAREION}`);
+  script += `\n${SFC_COMPONENT_NAME}.render = ${SFC_RENDER_NAME}`;
+  return script;
+}
 
+// 替换掉 script 编译后的 导出声明 为 变量声明
 function replaceExportToDeclaration(script) {
   return script.replace('export default', SFC_DECLAREION);
 }
+// 注入 scopeId
+function injectScopeId(script, scopeId) {
+  return script + `\n${SFC_COMPONENT_NAME}.__scopeId = "${scopeId}"`;
+}
+// 注入 导出语句
+function injectExport(script) {
+  return script + `\n${SFC_EXPORT} ${SFC_COMPONENT_NAME};`;
+}
 
-export async function compileSfc(filePath, mode) {
+export async function compileSfc(filePath, format) {
   let source = await readFile(filePath, 'utf-8');
   const { descriptor } = parse(source, { sourceMap: false });
   let { styles, template, script, scriptSetup } = descriptor;
@@ -37,7 +55,7 @@ export async function compileSfc(filePath, mode) {
   const id = hash_sum(source);
   // 检查是否存在 scoped 作用域的样式块
   const hasScope = styles.some(style => style.scoped);
-  // 生成 scopedId
+  // 生成 scopeId
   const scopeId = hasScope ? `data-v-${id}` : '';
   // 处理 script
   let scriptContent = '';
@@ -46,7 +64,7 @@ export async function compileSfc(filePath, mode) {
   });
   scriptContent += content;
 
-  console.dir(descriptor, { depth: 1 });
+  // console.dir(descriptor, { depth: 1 });
   // 处理 template
   if (template) {
     const { code } = compileTemplate({
@@ -54,22 +72,28 @@ export async function compileSfc(filePath, mode) {
       source: template.content,
       filename: filePath,
       compilerOptions: {
-        expressionPlugins: scopeId,
+        scopeId,
         bindingMetadata: bindings,
       },
     });
     // 将导出语句替换成声明语句
     scriptContent = replaceExportToDeclaration(scriptContent);
-    // 替换掉
-    // scriptContent = injectRender(scriptContent, code);
-    console.dir(scriptContent, { depth: 1 });
-    console.log('===========================');
-    console.dir(code, { depth: 1 });
+    // 将 template 编译后的 render 函数注入 script 中，同时替换名称
+    scriptContent = injectRender(scriptContent, code);
   }
-  const scirptFilePath = replaceExt(filePath, '.css');
+  // 注入 scopeId
+  if (scopeId) {
+    scriptContent = injectScopeId(scriptContent, scopeId);
+  }
+  // 注入 导出语句
+  scriptContent = injectExport(scriptContent);
+  const scriptFilePath = replaceExt(filePath, `.${script?.lang || scriptSetup?.lang || 'js'}`);
+  await compilerScript(scriptContent, scriptFilePath, format);
+  // console.dir(scriptContent, { depth: 1 });
+
   // 处理 css
   for (const { content, lang, scoped } of styles) {
-    const cssFilePath = replaceExt(filePath, '.css');
+    const cssFilePath = replaceExt(filePath, `.${lang}`);
     // vue 编译 css
     let { code } = compileStyle({
       source: content,
@@ -77,7 +101,9 @@ export async function compileSfc(filePath, mode) {
       id: scopeId,
       scoped,
     });
-    code = lang === 'scss' ? await compileSass(code) : code;
-    // writeFile(outputdir + '/index.css', code.trim(), 'utf-8');
+    outputFile(cssFilePath, code.trim(), 'utf-8');
+    if (lang === 'scss') {
+      await compileSass(cssFilePath);
+    }
   }
 }

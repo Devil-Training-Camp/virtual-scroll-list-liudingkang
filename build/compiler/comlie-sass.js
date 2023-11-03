@@ -1,6 +1,10 @@
+import { outputFile, readFile } from 'fs-extra';
 import { compileStringAsync } from 'sass';
+import { replaceExt } from '../utils';
 
-export async function compileSass(code) {
+// 编译 scss
+export async function compileSass(filePath) {
+  const code = await readFile(filePath);
   const { css } = await compileStringAsync(code);
-  return css;
+  await outputFile(replaceExt(filePath, '.css'), css, 'utf-8');
 }

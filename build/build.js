@@ -8,6 +8,9 @@ import { copy } from 'fs-extra';
 import { CJS_DIR, ES_DIR, SRC_DIR } from './config.js';
 import { compileSfc } from './compiler/complie-sfc.js';
 
+async function setEnv() {
+  process.env.NODE_ENV = 'production';
+}
 async function copySource() {
   await Promise.all([copy(SRC_DIR, ES_DIR)], copy(SRC_DIR, CJS_DIR));
 }
@@ -91,6 +94,7 @@ async function runBuildTasks() {
   }
 }
 async function build() {
+  await setEnv();
   try {
     await runBuildTasks();
   } catch {
