@@ -1,15 +1,16 @@
 import {
   parse,
-  compileStyle,
+  compileStyle as compileSfcStyle,
   compileTemplate,
   compileScript as compileSfcScript,
 } from 'vue/compiler-sfc';
 import hash_sum from 'hash-sum';
-import { outputFile, readFile } from 'fs-extra';
+import { outputFile } from 'fs-extra';
+import { readFile } from 'fs/promises';
 
-import { compileSass } from './comlie-sass.js';
 import { replaceExt } from '../utils.js';
-import { compilerScript } from './complie-script.js';
+import { compileScript } from './complie-script.js';
+import { compileStyle } from './compile-style.js';
 
 const SFC_COMPONENT_NAME = '__SFC__';
 const SFC_RENDER_NAME = '__render__';
@@ -88,22 +89,22 @@ export async function compileSfc(filePath, format) {
   // 注入 导出语句
   scriptContent = injectExport(scriptContent);
   const scriptFilePath = replaceExt(filePath, `.${script?.lang || scriptSetup?.lang || 'js'}`);
-  await compilerScript(scriptContent, scriptFilePath, format);
+  await outputFile(scriptFilePath, scriptContent);
+  // 编译 script
+  await compileScript(scriptFilePath, format);
   // console.dir(scriptContent, { depth: 1 });
 
   // 处理 css
   for (const { content, lang, scoped } of styles) {
     const cssFilePath = replaceExt(filePath, `.${lang}`);
     // vue 编译 css
-    let { code } = compileStyle({
+    let { code } = compileSfcStyle({
       source: content,
       filename: cssFilePath,
       id: scopeId,
       scoped,
     });
-    outputFile(cssFilePath, code.trim(), 'utf-8');
-    if (lang === 'scss') {
-      await compileSass(cssFilePath);
-    }
+    await outputFile(cssFilePath, code.trim(), 'utf-8');
+    await compileStyle(cssFilePath);
   }
 }

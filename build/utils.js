@@ -2,6 +2,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { glob } from 'glob';
 
+const EXT_RE = /(.*)\.[^.]*$/;
+export const SFC_RE = /\.(vue)$/;
+export const STYLE_RE = /\.(css|less|scss)$/;
+export const SCRIPT_RE = /\.(js|ts|jsx|tsx)$/;
+
 // 解析到根路径函数
 const resolve = dir => {
   const __filename = fileURLToPath(import.meta.url);
@@ -19,30 +24,14 @@ export async function getFileEntries(dir, extension) {
     ]),
   );
 }
-export function replaceExt(path, ext = '') {
-  return path.replace(/(.*)\.[^.]*$/, `$1${ext}`);
+// 获取文件扩展名
+export function getExt(filePath) {
+  return path.extname(filePath);
 }
-// export function parseVuePartRequest(id) {
-//   if (!id.includes('.vue')) return;
-//   const filename = id.substr(0, id.lastIndexOf('.vue') + 4);
-//   const params = getVueMetaFromQuery(id);
-//   if (params === null) return;
-//   return {
-//     filename,
-//     meta: params,
-//   };
-// }
-// export function getVueMetaFromQuery(id) {
-//   const match = GET_QUERY.exec(id);
-//   if (match) {
-//     const query = queryString.parse(match[2]);
-//     if (PARAM_NAME in query) {
-//       const data = Array.isArray(query[PARAM_NAME]) ? query[PARAM_NAME][0] : query[PARAM_NAME];
-//       const [type, index, lang] = data.split('.');
-//       return lang
-//         ? { type, lang, index: parseInt(index) } // styles.0.css
-//         : { type, lang: index }; // script.js
-//     }
-//   }
-//   return null;
-// }
+// 替换文件扩展
+export function replaceExt(filePath, ext = '') {
+  return filePath.replace(EXT_RE, `$1${ext}`);
+}
+export const isSfc = path => SFC_RE.test(path);
+export const isStyle = path => STYLE_RE.test(path);
+export const isScript = path => SCRIPT_RE.test(path);

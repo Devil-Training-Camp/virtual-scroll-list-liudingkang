@@ -1,18 +1,32 @@
 import { logger } from 'rslog';
 import { glob } from 'glob';
-
-import path from 'path';
 import { execSync } from 'child_process';
-import { copy } from 'fs-extra';
+import { copy, remove } from 'fs-extra';
 
 import { CJS_DIR, ES_DIR, SRC_DIR } from './config.js';
 import { compileSfc } from './compiler/complie-sfc.js';
+import { isScript, isSfc, isStyle } from './utils.js';
+import { compileScript } from './compiler/complie-script.js';
+import { compileStyle } from './compiler/compile-style.js';
 
 async function setEnv() {
   process.env.NODE_ENV = 'production';
 }
 async function copySource() {
   await Promise.all([copy(SRC_DIR, ES_DIR)], copy(SRC_DIR, CJS_DIR));
+}
+async function complieFile(filePath, format) {
+  console.log(filePath);
+  if (isSfc(filePath)) {
+    await compileSfc(filePath, format);
+  }
+  if (isScript(filePath)) {
+    await compileScript(filePath, format);
+  }
+  if (isStyle(filePath)) {
+    await compileStyle(filePath);
+  }
+  await remove(filePath);
 }
 // 类型检测
 async function check() {
@@ -31,25 +45,25 @@ async function buildOutputs() {
 // 生成类型
 async function buildTypes() {
   const decPath = './tsconfig.declaration.json';
-  execSync(
-    `tsc -p ${decPath} -declarationDir ${ES_DIR} && tsc -p ${decPath} -declarationDir ${CJS_DIR}`,
-    {
-      stdio: 'inherit',
-      shell: true,
-    },
-  );
+  execSync(`tsc -p ${decPath}`, {
+    stdio: 'inherit',
+    shell: true,
+  });
 }
 // 构建 esm
 async function buildEs() {
-  const sfcEntries = await glob(`${ES_DIR}/packages/+(**)/*.vue`);
-  for (const filePath of sfcEntries.slice(1, 2)) {
-    await compileSfc(filePath, 'esm');
+  const entries = await glob(`${ES_DIR}/**/*`, {
+    nodir: true,
+  });
+  for (const filePath of entries) {
+    await complieFile(filePath, 'esm');
+    // await compileSfc(filePath, 'esm');
   }
 }
 // 构建 cjs
 async function buildCjs() {
   const sfcEntries = await glob(`${CJS_DIR}/packages/+(**)/*.vue`);
-  for (const filePath of sfcEntries.slice(-1)) {
+  for (const filePath of sfcEntries) {
     await compileSfc(filePath, 'cjs');
   }
 }
