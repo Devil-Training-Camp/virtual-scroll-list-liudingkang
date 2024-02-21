@@ -2,7 +2,7 @@ node_modules
 dist
 es
 lib
-# build
+build
 
 .husky
 .vscode

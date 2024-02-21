@@ -4,6 +4,7 @@ import { logger } from 'rslog';
 import { replaceExt } from '../utils.js';
 import { compileCss } from './compile-css.js';
 import { compileSass } from './complie-sass.js';
+import { readFile } from 'fs/promises';
 
 // 编译样式 css scss
 export async function compileStyle(filePath) {
@@ -16,12 +17,14 @@ export async function compileStyle(filePath) {
         break;
 
       default:
+        css = await readFile(filePath, 'utf-8');
         break;
     }
     const code = await compileCss(css);
     await outputFile(replaceExt(filePath, '.css'), code);
-    await remove(filePath);
+    // await remove(filePath);
   } catch (error) {
+    console.log(error);
     logger.error('Compile style failed: ' + filePath);
   }
 }
