@@ -2,20 +2,23 @@ import esbuild from 'esbuild';
 import { outputFile } from 'fs-extra';
 import { readFile } from 'fs/promises';
 import { replaceExt } from '../utils.js';
+import { replaceScriptImportExt } from './get-deps.js';
 
-function fileFromat(format) {
+export function jsFileExt(format) {
   return format === 'esm' ? '.mjs' : '.js';
 }
 
 // 编译 js
 export async function compileScript(filePath, format) {
   const script = await readFile(filePath, 'utf-8');
-  const { code } = await esbuild.transform(script, {
+  let { code } = await esbuild.transform(script, {
     loader: 'ts',
     target: 'es2016',
     format,
   });
-  const file = replaceExt(filePath, fileFromat(format));
+  const ext = jsFileExt(format);
+  const file = replaceExt(filePath, ext);
+  code = replaceScriptImportExt(code, ext);
   await outputFile(file, code, 'utf-8');
   // console.dir(code, { depth: 1 });
 }

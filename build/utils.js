@@ -8,7 +8,7 @@ export const STYLE_RE = /\.(css|less|scss)$/;
 export const SCRIPT_RE = /\.(js|ts|jsx|tsx)$/;
 
 // 解析到根路径函数
-const resolve = dir => {
+export const resolve = dir => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   return path.resolve(__dirname, '../', dir);

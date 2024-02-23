@@ -8,6 +8,7 @@ import { compileSfc } from './compiler/complie-sfc.js';
 import { isScript, isSfc, isStyle } from './utils.js';
 import { compileScript } from './compiler/complie-script.js';
 import { compileStyle } from './compiler/compile-style.js';
+import { genComponentStyle } from './compiler/gen-component-style.js';
 
 async function setEnv() {
   process.env.NODE_ENV = 'production';
@@ -26,7 +27,7 @@ async function complieFile(filePath, format) {
   if (isStyle(filePath)) {
     await compileStyle(filePath);
   }
-  await remove(filePath);
+  // await remove(filePath);
 }
 // 类型检测
 async function check() {
@@ -45,10 +46,14 @@ async function buildOutputs() {
 // 生成类型
 async function buildTypes() {
   const decPath = './tsconfig.declaration.json';
-  execSync(`tsc -p ${decPath}`, {
+  execSync(`vue-tsc --declaration --emitDeclarationOnly -p ${decPath}`, {
     stdio: 'inherit',
     shell: true,
   });
+}
+async function buildStyleEntry() {
+  genComponentStyle(ES_DIR, 'esm');
+  genComponentStyle(CJS_DIR, 'cjs');
 }
 // 构建 esm
 async function buildEs() {
@@ -69,7 +74,7 @@ async function buildCjs() {
 }
 const tasks = [
   {
-    text: 'type copy source',
+    text: 'copy source',
     task: copySource,
   },
   // {
@@ -80,13 +85,17 @@ const tasks = [
   //   text: 'build outputs',
   //   task: buildOutputs,
   // },
-  // {
-  //   text: 'build types',
-  //   task: buildTypes,
-  // },
+  {
+    text: 'build types',
+    task: buildTypes,
+  },
   {
     text: 'build esm',
     task: buildEs,
+  },
+  {
+    text: 'gen style entry',
+    task: buildStyleEntry,
   },
   // {
   //   text: 'build cjs',

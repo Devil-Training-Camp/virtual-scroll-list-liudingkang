@@ -1,0 +1,5 @@
+{
+  "compose-list": ["dynamic-list"],
+  "dynamic-list": [],
+  "fixed-size-list": []
+}
