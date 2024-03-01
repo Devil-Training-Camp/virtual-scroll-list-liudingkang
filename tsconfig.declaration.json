@@ -1,8 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "es/**/*",
-    "component.d.ts"
+    "es/**/*.ts",
+    "lib/**/*.ts",
   ], // 包含的文件
   "exclude": [
     "node_modules",
@@ -10,9 +10,10 @@
     "dist/**/*"
   ], // 排除的文件
   "compilerOptions": {
-    // "rootDir": "src", // 指定代码的根目录，默认情况下编译后文件的目录结构会以最长的公共目录为根目录，通过rootDir可以手动指定根目录
+    // "rootDir": "./", // 指定代码的根目录，默认情况下编译后文件的目录结构会以最长的公共目录为根目录，通过rootDir可以手动指定根目录
     "declaration": true, // 自动生成声明文件
-    // "declarationDir": ".", // 输出时声明文件的文件夹
+    "declarationDir": ".", // 输出时声明文件的文件夹
+    "outDir": ".",
     "emitDeclarationOnly": true, // 只输出声明文件
     "allowJs": false
   }

@@ -1,4 +1,4 @@
-import type { Component } from 'vue';
+import type { Component, App } from 'vue';
 import type { WithInstall } from './utils';
 
 import { FixedSizeList } from './packages/fixed-size-list';
@@ -7,7 +7,7 @@ import { ComposeList } from './packages/compose-list';
 
 const components: Component[] = [FixedSizeList, DynamicList, ComposeList];
 
-const install = app => {
+const install = (app: App) => {
   components.forEach((component: Component) => {
     (component as WithInstall<Component>).install(app);
   });

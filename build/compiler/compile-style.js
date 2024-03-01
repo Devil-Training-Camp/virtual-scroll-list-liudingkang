@@ -1,10 +1,13 @@
-import { outputFile, remove } from 'fs-extra';
+import fsm from 'fs-extra';
 import path from 'path';
 import { logger } from 'rslog';
 import { replaceExt } from '../utils.js';
 import { compileCss } from './compile-css.js';
 import { compileSass } from './complie-sass.js';
-import { readFile } from 'fs/promises';
+
+const { outputFile, writeFileSync, existsSync, readFileSync, readFile, remove } = fsm;
+export const IMPORT_STYLE_RE =
+  /(?<!['"`])import\s+['"](\.{1,2}\/.+((\.css)|(\.scss)))['"]\s*;?(?!\s*['"`])/g;
 
 // 编译样式 css scss
 export async function compileStyle(filePath) {
@@ -22,9 +25,33 @@ export async function compileStyle(filePath) {
     }
     const code = await compileCss(css);
     await outputFile(replaceExt(filePath, '.css'), code);
-    // await remove(filePath);
+    await remove(filePath);
   } catch (error) {
     console.log(error);
     logger.error('Compile style failed: ' + filePath);
   }
+}
+export function normalizeStyleDependency(styleImport, styleReg) {
+  styleImport = styleImport.replace(styleReg, '$1');
+  styleImport = styleImport.replace(/(\.scss)|(\.css)/, '');
+  styleImport = '../' + styleImport;
+  return styleImport;
+}
+export function extractStyleDependencies(filePath, code, styleReg, format) {
+  const cssFilePath = `${path.dirname(filePath)}/style/index${path.extname(filePath)}`;
+  if (!existsSync(cssFilePath)) {
+    return code;
+  }
+  let cssFile = readFileSync(cssFilePath, 'utf-8');
+  const styleImports = code.match(styleReg) ?? [];
+  const newImports = [];
+  styleImports.forEach(styleImport => {
+    const normalizePath = normalizeStyleDependency(styleImport, styleReg);
+    newImports.push(
+      format === 'esm' ? `import '${normalizePath}.css';\n` : `require('${normalizePath}.css');\n`,
+    );
+  });
+  cssFile = newImports.join('') + cssFile;
+  writeFileSync(cssFilePath, cssFile);
+  return code.replace(IMPORT_STYLE_RE, '');
 }

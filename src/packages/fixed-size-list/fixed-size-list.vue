@@ -25,6 +25,7 @@
     }"
   >
     <h2>{{ height }}</h2>
+    <h2>{{ test }}</h2>
   </div>
 </template>
 

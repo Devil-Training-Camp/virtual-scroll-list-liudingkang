@@ -1,5 +1,4 @@
 import path from 'path';
-import { existsSync } from 'fs';
 import { createRequire } from 'module';
 
 import { glob } from 'glob';
@@ -12,23 +11,22 @@ export async function genComponentStyle(dir, format) {
   const componentPaths = await glob(`${dir}/packages/*/`);
   componentPaths.forEach(async line => {
     const component = path.basename(line);
-    const deps = getDeps(`${line}/${component}.scss`, component);
-    const content = deps
+    const deps = getDeps(component);
+    let content = deps
       .map(dep =>
         format === 'esm'
-          ? `import '../${component}/${dep}.css;'`
-          : `require('../${component}/${dep}.css');`,
+          ? `import '../../${dep}/${dep}.css';\n`
+          : `require('../../${dep}/${dep}.css');\n`,
       )
-      .join(`\n`);
+      .join('');
+    content = content.replace(`../${component}`, '');
     await outputFile(`${line}/style/index${jsFileExt(format)}`, content);
   });
 }
-function getDeps(path, component) {
+function getDeps(component) {
   const request = createRequire(import.meta.url);
   const styleDeps = request(resolve('build/style-deps.json'));
   const deps = styleDeps[component];
-  if (existsSync(path)) {
-    deps.push(component);
-  }
+  deps.push(component);
   return deps;
 }

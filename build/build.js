@@ -14,10 +14,11 @@ async function setEnv() {
   process.env.NODE_ENV = 'production';
 }
 async function copySource() {
+  await Promise.all([remove(ES_DIR), remove(CJS_DIR)]);
   await Promise.all([copy(SRC_DIR, ES_DIR)], copy(SRC_DIR, CJS_DIR));
 }
 async function complieFile(filePath, format) {
-  console.log(filePath);
+  // console.log(filePath);
   if (isSfc(filePath)) {
     await compileSfc(filePath, format);
   }
@@ -46,10 +47,20 @@ async function buildOutputs() {
 // 生成类型
 async function buildTypes() {
   const decPath = './tsconfig.declaration.json';
-  execSync(`vue-tsc --declaration --emitDeclarationOnly -p ${decPath}`, {
+  execSync(`vue-tsc -p ${decPath}`, {
     stdio: 'inherit',
     shell: true,
   });
+  await removeVueTypes(ES_DIR);
+  await removeVueTypes(CJS_DIR);
+}
+async function removeVueTypes(dir) {
+  const entries = await glob(`${dir}/**/*.vue.d.ts`, {
+    nodir: true,
+  });
+  for (const filePath of entries) {
+    await remove(filePath);
+  }
 }
 async function buildStyleEntry() {
   genComponentStyle(ES_DIR, 'esm');
@@ -90,12 +101,12 @@ const tasks = [
     task: buildTypes,
   },
   {
-    text: 'build esm',
-    task: buildEs,
-  },
-  {
     text: 'gen style entry',
     task: buildStyleEntry,
+  },
+  {
+    text: 'build esm',
+    task: buildEs,
   },
   // {
   //   text: 'build cjs',

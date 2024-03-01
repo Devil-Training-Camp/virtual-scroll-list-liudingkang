@@ -5,13 +5,14 @@ import {
   compileScript as compileSfcScript,
 } from 'vue/compiler-sfc';
 import hash_sum from 'hash-sum';
-import { outputFile } from 'fs-extra';
+import fsm from 'fs-extra';
 import { readFile } from 'fs/promises';
 
 import { replaceExt } from '../utils.js';
 import { compileScript } from './complie-script.js';
 import { compileStyle } from './compile-style.js';
 
+const { outputFile, removeSync } = fsm;
 const SFC_COMPONENT_NAME = '__SFC__';
 const SFC_RENDER_NAME = '__render__';
 const SFC_DECLAREION = `const ${SFC_COMPONENT_NAME} =`;
@@ -41,17 +42,9 @@ function injectExport(script) {
 
 export async function compileSfc(filePath, format) {
   let source = await readFile(filePath, 'utf-8');
+  removeSync(filePath);
   const { descriptor } = parse(source, { sourceMap: false });
   let { styles, template, script, scriptSetup } = descriptor;
-
-  // const sourceRoot = process.cwd();
-  // const shortFilePath = path
-  //   .relative(sourceRoot, filePath)
-  //   .replace(/^(\.\.[/\\])+/, '')
-  //   .replace(/\\/g, '/');
-  // // hash 单文件路径生成 id
-  // const id = hash_sum(shortFilePath);
-
   // hash 单文件路径生成 id
   const id = hash_sum(source);
   // 检查是否存在 scoped 作用域的样式块

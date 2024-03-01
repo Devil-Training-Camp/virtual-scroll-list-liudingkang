@@ -6,7 +6,5 @@
 </script>
 
 <template>
-  <FixedSizeList />
+  <FixedSizeList test="发你开单快乐大"></FixedSizeList>
 </template>
-
-<style scoped></style>
