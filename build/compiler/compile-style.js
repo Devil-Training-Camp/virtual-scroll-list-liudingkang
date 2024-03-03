@@ -24,8 +24,8 @@ export async function compileStyle(filePath) {
         break;
     }
     const code = await compileCss(css);
-    await outputFile(replaceExt(filePath, '.css'), code);
     await remove(filePath);
+    await outputFile(replaceExt(filePath, '.css'), code);
   } catch (error) {
     console.log(error);
     logger.error('Compile style failed: ' + filePath);

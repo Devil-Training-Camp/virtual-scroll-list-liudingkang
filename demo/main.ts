@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import '../es/packages/fixed-size-list/style';
-import FixedSizeList from '../es/packages/fixed-size-list';
+import '../es/packages/compose-list/style';
+import ComposeList from '../es/packages/compose-list';
 const app = createApp(App);
-app.use(FixedSizeList);
+app.use(ComposeList);
 app.mount('#app');

@@ -1,11 +1,10 @@
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
-import postcss from 'rollup-plugin-postcss';
 import base from './rollup.base.config.js';
 import esbuild from 'rollup-plugin-esbuild';
 import del from 'rollup-plugin-delete';
 import styles from 'rollup-plugin-styles';
-import html from '@rollup/plugin-html';
+import html from 'rollup-plugin-html2';
 
 export default {
   ...base,
@@ -27,9 +26,13 @@ export default {
       // 遵从 assetFileNames 路径
       mode: 'extract',
     }),
+    html({
+      template: 'demo/index.html',
+      onlinePath: '.',
+    }),
     serve({
       // open: true,
-      // openPage: '/demo/index.html',
+      // openPage: '/dist/index.html',
       port: 8080,
     }),
     livereload({
