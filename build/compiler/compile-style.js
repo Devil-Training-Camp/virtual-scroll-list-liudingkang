@@ -48,7 +48,7 @@ export function extractStyleDependencies(filePath, code, styleReg, format) {
   styleImports.forEach(styleImport => {
     const normalizePath = normalizeStyleDependency(styleImport, styleReg);
     newImports.push(
-      format === 'esm' ? `import '${normalizePath}.css';\n` : `require('${normalizePath}.css');\n`,
+      format === 'es' ? `import '${normalizePath}.css';\n` : `require('${normalizePath}.css');\n`,
     );
   });
   cssFile = newImports.join('') + cssFile;

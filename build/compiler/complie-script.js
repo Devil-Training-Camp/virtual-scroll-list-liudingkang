@@ -1,15 +1,11 @@
 import esbuild from 'esbuild';
 import fsm from 'fs-extra';
 import { readFile } from 'fs/promises';
-import { replaceExt } from '../utils.js';
+import { jsFileExt, replaceExt } from '../utils.js';
 import { replaceScriptImportExt } from './get-deps.js';
 import { IMPORT_STYLE_RE, extractStyleDependencies } from './compile-style.js';
 
 const { outputFile, removeSync } = fsm;
-
-export function jsFileExt(format) {
-  return format === 'esm' ? '.mjs' : '.js';
-}
 
 // 编译 js
 export async function compileScript(filePath, format) {
@@ -20,7 +16,7 @@ export async function compileScript(filePath, format) {
   let { code } = await esbuild.transform(script, {
     loader: 'ts',
     target: 'es2016',
-    format,
+    format: format === 'es' ? 'esm' : format,
   });
   const ext = jsFileExt(format);
   const file = replaceExt(filePath, ext);
@@ -28,7 +24,7 @@ export async function compileScript(filePath, format) {
     code = extractStyleDependencies(file, code, IMPORT_STYLE_RE, format);
   }
   code = replaceScriptImportExt(code, ext);
-  await outputFile(file, code, 'utf-8');
   removeSync(filePath);
+  await outputFile(file, code, 'utf-8');
   // console.dir(code, { depth: 1 });
 }

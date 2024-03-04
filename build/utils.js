@@ -35,3 +35,7 @@ export function replaceExt(filePath, ext = '') {
 export const isSfc = path => SFC_RE.test(path);
 export const isStyle = path => STYLE_RE.test(path);
 export const isScript = path => SCRIPT_RE.test(path);
+
+export function jsFileExt(format) {
+  return format === 'es' ? '.mjs' : '.js';
+}
