@@ -1,4 +1,4 @@
-import { rollup } from 'rollup';
+import { rollup, watch } from 'rollup';
 import { CJS_DIR, ES_DIR } from '../config.js';
 import { jsFileExt, isScript, isSfc, isStyle } from '../utils.js';
 import autoprefixer from 'autoprefixer';
@@ -20,15 +20,20 @@ const commonPlugins = [
 ];
 const buildOptions = [];
 
-function getCompileStyleOptions(dir, format) {
-  const jsExt = jsFileExt(format);
+function getCompileStyleOptions() {
   return {
-    input: `${dir}/style${jsExt}`,
+    input: `${ES_DIR}/style.mjs`,
     output: [
       {
-        format,
-        dir,
-        entryFileNames: `[name]${jsExt}`,
+        format: 'es',
+        dir: ES_DIR,
+        entryFileNames: `[name].bundle.mjs`,
+        assetFileNames: '[name][extname]',
+      },
+      {
+        format: 'cjs',
+        dir: CJS_DIR,
+        entryFileNames: `[name].bundle.js`,
         assetFileNames: '[name][extname]',
       },
     ],
@@ -46,10 +51,11 @@ function getCompileStyleOptions(dir, format) {
         ],
       }),
     ],
+    logLevel: 'silent',
   };
 }
 function compileStyleTask() {
-  buildOptions.push(getCompileStyleOptions(ES_DIR, 'es'), getCompileStyleOptions(CJS_DIR, 'cjs'));
+  buildOptions.push(getCompileStyleOptions());
 }
 function compileScriptTask() {
   const options = {};
@@ -58,7 +64,7 @@ export async function compileBundle() {
   compileStyleTask();
   const tasks = buildOptions.map(async options => {
     const bundle = await rollup(options);
-    await Promise.all(options.output.map(bundle.write));
+    return Promise.all(options.output.map(bundle.write));
   });
   await Promise.all(tasks);
 }

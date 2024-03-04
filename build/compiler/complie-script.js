@@ -12,19 +12,19 @@ export async function compileScript(filePath, format) {
   if (filePath.includes('.d.ts')) {
     return;
   }
-  const script = await readFile(filePath, 'utf-8');
+  let script = await readFile(filePath, 'utf-8');
+  const ext = jsFileExt(format);
+  const outputFilePath = replaceExt(filePath, ext);
+  if (script) {
+    script = extractStyleDependencies(outputFilePath, script, IMPORT_STYLE_RE, format);
+  }
+  script = replaceScriptImportExt(script, ext);
   let { code } = await esbuild.transform(script, {
     loader: 'ts',
     target: 'es2016',
     format: format === 'es' ? 'esm' : format,
   });
-  const ext = jsFileExt(format);
-  const file = replaceExt(filePath, ext);
-  if (code) {
-    code = extractStyleDependencies(file, code, IMPORT_STYLE_RE, format);
-  }
-  code = replaceScriptImportExt(code, ext);
   removeSync(filePath);
-  await outputFile(file, code, 'utf-8');
+  await outputFile(outputFilePath, code, 'utf-8');
   // console.dir(code, { depth: 1 });
 }
