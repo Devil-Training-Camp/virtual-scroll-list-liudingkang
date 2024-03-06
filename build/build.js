@@ -1,7 +1,7 @@
 import { logger } from 'rslog';
 import { copy, remove } from 'fs-extra';
 
-import { CJS_DIR, ES_DIR, SRC_DIR } from './config.js';
+import { CJS_DIR, ES_DIR, SRC_DIR } from './common/constant.js';
 import { buildStyleEntry } from './compiler/gen-component-style.js';
 import { buildModuleEntry } from './compiler/gen-module-entry.js';
 import { compileBundle, compileModule } from './compiler/compile-module.js';

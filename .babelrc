@@ -3,6 +3,8 @@
     [
       "@babel/preset-env",
       {
+        // 关闭 @babel/preset-env 默认的 Polyfill 注入
+        // 因为全局polyfill 注入会造成全局污染，对组件库开发来说不行
         "useBuiltIns": false
         // "corejs": 3
       }

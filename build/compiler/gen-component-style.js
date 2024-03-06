@@ -4,11 +4,11 @@ import { createRequire } from 'module';
 import { glob } from 'glob';
 import { outputFile } from 'fs-extra';
 
-import { jsFileExt, resolve } from '../utils.js';
-import { CJS_DIR, ES_DIR } from '../config.js';
+import { jsFileExt, resolve } from '../common/utils.js';
+import { CJS_DIR, ES_DIR } from '../common/constant.js';
 
 const request = createRequire(import.meta.url);
-const styleDeps = request(resolve('build/style-deps.json'));
+const styleDeps = request(resolve('build/config/style-deps.json'));
 
 function getDeps(component) {
   const deps = styleDeps[component].slice(0);

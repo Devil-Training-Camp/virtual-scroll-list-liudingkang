@@ -11,7 +11,7 @@ export const SCRIPT_RE = /\.(js|ts|jsx|tsx)$/;
 export const resolve = dir => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  return path.resolve(__dirname, '../', dir);
+  return path.resolve(__dirname, '../../', dir);
 };
 
 // 获取导出入口

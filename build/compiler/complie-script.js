@@ -1,7 +1,7 @@
 import esbuild from 'esbuild';
 import fsm from 'fs-extra';
 import { readFile } from 'fs/promises';
-import { jsFileExt, replaceExt } from '../utils.js';
+import { jsFileExt, replaceExt } from '../common/utils.js';
 import { replaceScriptImportExt } from './get-deps.js';
 import { IMPORT_STYLE_RE, extractStyleDependencies } from './compile-style.js';
 

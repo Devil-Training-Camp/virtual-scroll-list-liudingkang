@@ -8,7 +8,7 @@ import hash_sum from 'hash-sum';
 import fsm from 'fs-extra';
 import { readFile } from 'fs/promises';
 
-import { replaceExt } from '../utils.js';
+import { replaceExt } from '../common/utils.js';
 import { compileScript } from './complie-script.js';
 import { compileStyle } from './compile-style.js';
 

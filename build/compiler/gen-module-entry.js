@@ -2,8 +2,8 @@ import { glob } from 'glob';
 import { basename } from 'path';
 import { writeFile } from 'fs/promises';
 
-import { jsFileExt, resolve } from '../utils.js';
-import { CJS_DIR, ES_DIR } from '../config.js';
+import { jsFileExt, resolve } from '../common/utils.js';
+import { CJS_DIR, ES_DIR } from '../common/constant.js';
 
 async function genESModuleEntryTemplate(options) {
   const { dir, ext } = options;

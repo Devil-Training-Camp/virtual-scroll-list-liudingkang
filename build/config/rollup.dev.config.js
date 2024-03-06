@@ -1,6 +1,6 @@
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
-import base from './rollup.base.config.js';
+import base from './rollup.base.common/constant.js';
 import esbuild from 'rollup-plugin-esbuild';
 import del from 'rollup-plugin-delete';
 import styles from 'rollup-plugin-styles';

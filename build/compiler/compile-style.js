@@ -1,7 +1,7 @@
 import fsm from 'fs-extra';
 import path from 'path';
 import { logger } from 'rslog';
-import { replaceExt } from '../utils.js';
+import { replaceExt } from '../common/utils.js';
 import { compileCss } from './compile-css.js';
 import { compileSass } from './complie-sass.js';
 
