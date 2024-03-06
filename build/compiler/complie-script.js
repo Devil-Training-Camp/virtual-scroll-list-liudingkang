@@ -21,7 +21,6 @@ export async function compileScript(filePath, format) {
   script = replaceScriptImportExt(script, ext);
   let { code } = await esbuild.transform(script, {
     loader: 'ts',
-    target: 'es2016',
     format: format === 'es' ? 'esm' : format,
   });
   removeSync(filePath);

@@ -1,26 +1,28 @@
 import { rollup } from 'rollup';
-import { CJS_DIR, ES_DIR } from '../common/constant.js';
+import { CJS_DIR, ES_DIR, PACKAGE_NAME } from '../common/constant.js';
 import { isScript, isSfc, isStyle } from '../common/utils.js';
 import { compileScript } from './complie-script.js';
 import { compileStyle } from './compile-style.js';
 import { compileSfc } from './complie-sfc.js';
 import { glob } from 'glob';
 
-const tasks = [];
-
 export async function compileBundle() {
-  await buildWithRollup();
-  await Promise.all(tasks.map(task => task()));
-}
-async function buildWithRollup() {
-  const rollupOptions = (await import('../config/rollup.prod.config.js')).default;
-  const rollupTasks = rollupOptions.map(options => {
+  const startTime = performance.now();
+  const tasks = [];
+  const { esbuildOptions, styleOptions, babelOptions } = await import(
+    '../config/rollup.prod.config.js'
+  );
+  const jsOptions = babelOptions;
+  const rollupTasks = [esbuildOptions, styleOptions].map(options => {
     return async () => {
       const bundle = await rollup(options);
       return Promise.all(options.output.map(bundle.write));
     };
   });
   tasks.push(...rollupTasks);
+  await Promise.all(tasks.map(task => task()));
+  const endTime = performance.now();
+  console.log(`bundle time: ${(endTime - startTime).toFixed(1)} 毫秒`);
 }
 async function complieFile(filePath, format) {
   if (isSfc(filePath)) {
