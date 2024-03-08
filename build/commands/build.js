@@ -1,15 +1,13 @@
 import { logger } from 'rslog';
 import { copy, remove } from 'fs-extra';
 
-import { CJS_DIR, ES_DIR, SRC_DIR } from './common/constant.js';
-import { buildStyleEntry } from './compiler/gen-component-style.js';
-import { buildModuleEntry } from './compiler/gen-module-entry.js';
-import { compileBundle, compileModule } from './compiler/compile-module.js';
-import { compileTypes } from './compiler/compile-types.js';
+import { CJS_DIR, ES_DIR, SRC_DIR } from '../common/constant.js';
+import { buildStyleEntry } from '../compiler/gen-component-style.js';
+import { buildModuleEntry } from '../compiler/gen-module-entry.js';
+import { compileBundle, compileModule } from '../compiler/compile-module.js';
+import { compileTypes } from '../compiler/compile-types.js';
+import { setBuildConfig } from '../config/config.js';
 
-async function setEnv() {
-  process.env.NODE_ENV = 'production';
-}
 async function copySource() {
   await Promise.all([remove(ES_DIR), remove(CJS_DIR)]);
   await Promise.all([copy(SRC_DIR, ES_DIR)], copy(SRC_DIR, CJS_DIR));
@@ -55,8 +53,9 @@ async function runBuildTasks() {
     }
   }
 }
-async function build() {
-  await setEnv();
+export async function build(options) {
+  process.env.NODE_ENV = 'production';
+  setBuildConfig(options);
   try {
     await runBuildTasks();
   } catch {
@@ -64,4 +63,3 @@ async function build() {
     process.exit(1);
   }
 }
-build();

@@ -1,19 +1,21 @@
 import { rollup } from 'rollup';
-import { CJS_DIR, ES_DIR, PACKAGE_NAME } from '../common/constant.js';
+import { CJS_DIR, ES_DIR } from '../common/constant.js';
 import { isScript, isSfc, isStyle } from '../common/utils.js';
 import { compileScript } from './complie-script.js';
 import { compileStyle } from './compile-style.js';
 import { compileSfc } from './complie-sfc.js';
 import { glob } from 'glob';
+import { getBuildConfig } from '../config/config.js';
 
 export async function compileBundle() {
+  const config = await getBuildConfig();
   const startTime = performance.now();
   const tasks = [];
   const { esbuildOptions, styleOptions, babelOptions } = await import(
     '../config/rollup.prod.config.js'
   );
-  const jsOptions = babelOptions;
-  const rollupTasks = [esbuildOptions, styleOptions].map(options => {
+  const jsOptions = config.modern ? esbuildOptions : babelOptions;
+  const rollupTasks = [jsOptions, styleOptions].map(options => {
     return async () => {
       const bundle = await rollup(options);
       return Promise.all(options.output.map(bundle.write));
@@ -22,7 +24,9 @@ export async function compileBundle() {
   tasks.push(...rollupTasks);
   await Promise.all(tasks.map(task => task()));
   const endTime = performance.now();
-  console.log(`bundle time: ${(endTime - startTime).toFixed(1)} 毫秒`);
+  console.log(
+    `${config.modern ? 'esbuild' : 'babel'} bundle time: ${(endTime - startTime).toFixed(1)} ms`,
+  );
 }
 async function complieFile(filePath, format) {
   if (isSfc(filePath)) {
