@@ -11,4 +11,12 @@ program
     console.log(options);
     build(options);
   });
+
+program
+  .command('dev')
+  .description('Devolop components')
+  .action(async () => {
+    const { dev } = await import('./commands/dev.js');
+    dev();
+  });
 program.parse();

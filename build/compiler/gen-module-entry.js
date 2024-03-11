@@ -1,6 +1,7 @@
-import { glob } from 'glob';
 import { basename } from 'path';
 import { writeFile } from 'fs/promises';
+
+import { glob } from 'glob';
 
 import { jsFileExt, resolve } from '../common/utils.js';
 import { CJS_DIR, ES_DIR } from '../common/constant.js';

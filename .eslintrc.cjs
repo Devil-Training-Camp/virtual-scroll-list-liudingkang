@@ -31,6 +31,7 @@ module.exports = {
       },
     ],
     'import/namespace': [0],
+    'import/no-named-as-default-member': [0],
   },
   settings: {
     'import/resolver': {
@@ -39,7 +40,7 @@ module.exports = {
     },
   },
   // 全局变量
-  globals: {
-    process: true,
-  },
+  // globals: {
+  //   process: true,
+  // },
 };

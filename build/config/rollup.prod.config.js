@@ -1,15 +1,15 @@
 import { babel } from '@rollup/plugin-babel';
-import terser from '@rollup/plugin-terser';
+// import terser from '@rollup/plugin-terser';
 import autoprefixer from 'autoprefixer';
 import cssnanoPlugin from 'cssnano';
-import postcss from 'rollup-plugin-postcss';
+// import postcss from 'rollup-plugin-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import styles from 'rollup-plugin-styles';
 import esbuild, { minify } from 'rollup-plugin-esbuild';
 
+import { CJS_DIR, ES_DIR, GLOBAL_NAME, PACKAGE_NAME } from '../common/constant.js';
+
 import base from './rollup.base.config.js';
-import { CJS_DIR, ES_DIR } from '../common/constant.js';
-import { GLOBAL_NAME, PACKAGE_NAME } from '../common/constant.js';
 
 export const esbuildOptions = {
   ...base,

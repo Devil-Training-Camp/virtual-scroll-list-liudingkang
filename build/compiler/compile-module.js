@@ -1,11 +1,14 @@
+import { remove } from 'fs-extra';
 import { rollup } from 'rollup';
+import { glob } from 'glob';
+
 import { CJS_DIR, ES_DIR } from '../common/constant.js';
 import { isScript, isSfc, isStyle } from '../common/utils.js';
+import { getBuildConfig } from '../config/config.js';
+
 import { compileScript } from './complie-script.js';
 import { compileStyle } from './compile-style.js';
 import { compileSfc } from './complie-sfc.js';
-import { glob } from 'glob';
-import { getBuildConfig } from '../config/config.js';
 
 export async function compileBundle() {
   const config = await getBuildConfig();
@@ -23,10 +26,15 @@ export async function compileBundle() {
   });
   tasks.push(...rollupTasks);
   await Promise.all(tasks.map(task => task()));
+  await removeStyleBundleFile();
   const endTime = performance.now();
   console.log(
     `${config.modern ? 'esbuild' : 'babel'} bundle time: ${(endTime - startTime).toFixed(1)} ms`,
   );
+}
+async function removeStyleBundleFile() {
+  await remove('es/style.bundle.mjs');
+  await remove('lib/style.bundle.js');
 }
 async function complieFile(filePath, format) {
   if (isSfc(filePath)) {

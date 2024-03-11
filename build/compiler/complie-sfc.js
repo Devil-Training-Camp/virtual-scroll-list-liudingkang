@@ -1,3 +1,5 @@
+import { readFile } from 'fs/promises';
+
 import {
   parse,
   compileStyle as compileSfcStyle,
@@ -6,12 +8,11 @@ import {
 } from 'vue/compiler-sfc';
 import hash_sum from 'hash-sum';
 import fsm from 'fs-extra';
-import { readFile } from 'fs/promises';
 
 import { replaceExt } from '../common/utils.js';
+
 import { compileScript } from './complie-script.js';
 import { compileStyle } from './compile-style.js';
-
 const { outputFile, removeSync } = fsm;
 const SFC_COMPONENT_NAME = '__SFC__';
 const SFC_RENDER_NAME = '__render__';

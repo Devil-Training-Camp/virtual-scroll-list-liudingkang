@@ -1,6 +1,8 @@
-import { glob } from 'glob';
 import { execSync } from 'child_process';
+
+import { glob } from 'glob';
 import fsm from 'fs-extra';
+
 import { CJS_DIR, ES_DIR } from '../common/constant.js';
 
 const { remove } = fsm;

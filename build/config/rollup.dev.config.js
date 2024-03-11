@@ -1,24 +1,29 @@
 import livereload from 'rollup-plugin-livereload';
 import serve from 'rollup-plugin-serve';
-import base from './rollup.base.common/constant.js';
 import esbuild from 'rollup-plugin-esbuild';
 import del from 'rollup-plugin-delete';
 import styles from 'rollup-plugin-styles';
 import html from 'rollup-plugin-html2';
+import vue from 'rollup-plugin-vue';
 
-export default {
+import base from './rollup.base.config.js';
+
+export const devOptions = {
   ...base,
   input: 'demo/main.ts',
-  output: {
-    format: 'umd',
-    file: 'dist/main.js',
-    globals: {
-      vue: 'Vue',
+  output: [
+    {
+      format: 'umd',
+      file: 'dist/main.js',
+      globals: {
+        vue: 'Vue',
+      },
     },
-  },
+  ],
   plugins: [
     ...base.plugins,
     del({ targets: 'dist/*' }), // 每次 build 之前删除 dist
+    vue(),
     esbuild({
       include: /\.[tj]s?$/,
     }),
@@ -32,7 +37,7 @@ export default {
     }),
     serve({
       // open: true,
-      // openPage: '/dist/index.html',
+      openPage: '/dist/index.html',
       port: 8080,
     }),
     livereload({
@@ -44,3 +49,5 @@ export default {
   },
   external: ['vue'],
 };
+
+export default [devOptions];

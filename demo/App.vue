@@ -2,9 +2,14 @@
   const test = (s: number) => {
     console.log('test: ', s);
   };
-  test(55);
+  test(52);
 </script>
 
 <template>
   <ComposeList></ComposeList>
 </template>
+<style>
+  body {
+    color: lightsalmon;
+  }
+</style>

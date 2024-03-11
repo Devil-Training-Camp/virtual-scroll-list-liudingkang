@@ -1,5 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+
 import { glob } from 'glob';
 
 const EXT_RE = /(.*)\.[^.]*$/;

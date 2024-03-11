@@ -1,5 +1,6 @@
-import { compileStringAsync } from 'sass';
 import { readFile } from 'fs/promises';
+
+import { compileStringAsync } from 'sass';
 
 // 编译 scss
 export async function compileSass(filePath) {

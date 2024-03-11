@@ -10,4 +10,4 @@ lib
 
 
 *.d.ts
-.eslintrc.cjs
+# .eslintrc.cjs
