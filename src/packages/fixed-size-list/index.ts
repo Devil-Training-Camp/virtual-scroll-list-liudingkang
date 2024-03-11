@@ -1,4 +1,5 @@
 import { withInstall } from '../../utils';
+
 import _FixedSizeList from './fixed-size-list.vue';
 
 export const FixedSizeList = withInstall(_FixedSizeList);

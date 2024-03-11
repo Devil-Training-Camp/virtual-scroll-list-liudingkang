@@ -1,4 +1,5 @@
 import type { App, Component } from 'vue';
+
 import { camelize } from './format';
 
 export type WithInstall<T> = T & {

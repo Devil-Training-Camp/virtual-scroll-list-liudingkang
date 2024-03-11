@@ -1,0 +1,25 @@
+ls:
+  .dir: kebab-case
+  .js: kebab-case
+  .ts: kebab-case
+  .vue: kebab-case
+  .d.ts: kebab-case
+  .tsx: kebab-case
+  .jsx: kebab-case
+  .css: kebab-case
+  .scss: kebab-case
+  .sass: kebab-case
+  .module.css: kebab-case
+  .module.sass: kebab-case
+  .module.scss: kebab-case
+  .config.js: pointcase
+
+ignore:
+  - node_modules
+  - dist
+  - es
+  - lib
+  - .git
+  - .husky
+  - .vscode
+  - demo/App.vue

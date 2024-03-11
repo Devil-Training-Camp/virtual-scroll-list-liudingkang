@@ -1,4 +1,5 @@
 import { withInstall } from '../../utils';
+
 import _DynamicList from './dynamic-list.vue';
 
 export const DynamicList = withInstall(_DynamicList);

@@ -1,9 +1,9 @@
 import type { Component, App } from 'vue';
-import type { WithInstall } from './utils';
 
-import FixedSizeList from './packages/fixed-size-list';
-import DynamicList from './packages/dynamic-list';
-import ComposeList from './packages/compose-list';
+import { DynamicList } from './packages/dynamic-list';
+import { ComposeList } from './packages/compose-list';
+import { FixedSizeList } from './packages/fixed-size-list';
+import type { WithInstall } from './utils';
 
 const components: Component[] = [FixedSizeList, DynamicList, ComposeList];
 

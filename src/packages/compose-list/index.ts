@@ -1,4 +1,5 @@
 import { withInstall } from '../../utils';
+
 import _ComposeList from './compose-list.vue';
 import '../../styles/base.scss';
 import '../../styles/animate.css';

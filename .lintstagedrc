@@ -1,4 +1,5 @@
 {
+  "*": ["ls-lint"],
   "src/**/*.{js,vue,ts}": ["eslint --fix"],
   "src/**/*.{css,scss,sass,vue}": ["stylelint --fix"]
 }

@@ -22,7 +22,11 @@
     "stylelint:fix": "stylelint \"src/**/*.{css,scss,sass,vue}\" --fix",
     "prepare": "husky install",
     "commit": "git cz",
-    "release": "release-it"
+    "release": "release-it",
+    "release:ci": "release-it --ci",
+    "release:pre": "release-it --preRelease-alpha --ci",
+    "release:pre:ci": "release-it --preRelease-alpha --ci",
+    "ls-lint": "ls-lint"
   },
   "engines": {
     "node": ">=16.14.2"
@@ -52,6 +56,7 @@
     "@babel/runtime": "^7.23.1",
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
+    "@ls-lint/ls-lint": "^2.2.2",
     "@release-it/conventional-changelog": "^7.0.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.5",
@@ -72,6 +77,7 @@
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-vue": "^9.17.0",
