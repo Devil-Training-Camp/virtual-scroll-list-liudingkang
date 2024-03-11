@@ -8,7 +8,6 @@ program
   .option('-m --modern', 'Build with esbuild')
   .action(async options => {
     const { build } = await import('./commands/build.js');
-    console.log(options);
     build(options);
   });
 
