@@ -1,40 +1,95 @@
-<script setup lang="ts">
-  defineOptions({
-    name: 'FixedSizeList',
-  });
-  const props = defineProps<{
-    test?: string;
-  }>();
+<!-- <script setup lang="ts">
+  import { computed, watchEffect } from 'vue';
 
-  console.log(props);
-  const height: number = 400;
-  interface Persion {
-    name: string;
-  }
-  const person: Persion = {
-    name: '32',
+  import { ListItem } from '../list-item';
+  import type { DynamicListProps, DynamicListEmits } from '../dynamic-list/props';
+
+  import { useScroller } from '@/hooks/useScroller.js';
+  import { useRenderer } from '@/hooks/useRenderer.js';
+
+  const defaultProps: DynamicListProps = {
+    itemSize: 70,
+    itemClass: '',
+    itemKey: 'id',
+    data: [],
+    width: 100,
+    height: 300,
+    cache: 2,
+    distance: 0,
   };
-  console.log(person, 34);
+
+  const props = withDefaults(defineProps<DynamicListProps>(), propsDefault);
+  const emits = defineEmits<DynamicListEmits>();
+
+  // item 总数
+  const itemsCount = computed(() => props.data.length);
+  // 渲染相关
+  const {
+    cacheStart, // 上缓冲边界
+    start, // 可见元素起始位置
+    end, // 可见元素结束位置
+    cacheEnd, // 下缓冲边界
+    containerStyle, // 占位元素样式
+    listStyle, // 可视区域样式
+    renderData, // 视图渲染数据
+  } = useRenderer(props);
+  // 滚动相关
+  const { scrollTop, scrollHandler } = useScroller(props, emits);
+  const updateRenderRange = () => {
+    // 当前可视区域内可以显示的 item 数量
+    const viewPortItemCount = computed(() => Math.ceil(props.height / props.itemSize));
+    // 可见元素起始位置
+    start.value = Math.floor(scrollTop.value / props.itemSize);
+    // 处理上缓冲边界
+    cacheStart.value = Math.max(0, start.value - props.cache);
+    // 可见元素结束位置 = 可视区域内可以显示的 item 数量 + 可见元素起始位置
+    end.value = Math.min(itemsCount.value - 1, start.value + viewPortItemCount.value - 1);
+    // 处理下缓冲边界
+    cacheEnd.value = Math.min(end.value + props.cache, itemsCount.value - 1);
+  };
+  // 当滚动时
+  watchEffect(updateRenderRange);
 </script>
 
 <template>
   <div
-    class="container test"
-    :style="{
-      color: 'red',
-    }"
+    class="virtual-list-container"
+    :style="containerStyle"
+    @scroll="scrollHandler"
   >
-    <h2>{{ height }}</h2>
-    <h2>{{ test }}</h2>
+    <div
+      class="virtual-list"
+      :style="listStyle"
+    >
+      <ListItem
+        v-for="{ itemData, top, height, index } in renderData"
+        :key="itemData[itemKey] || index"
+        :item-class="itemClass"
+        :item-data="itemData"
+        :item-index="index"
+        :style="{
+          top: top + 'px',
+          height: height + 'px',
+        }"
+      >
+        <template #default="props">
+          <slot v-bind="props"></slot>
+        </template>
+      </ListItem>
+    </div>
   </div>
 </template>
 
-<style scoped lang="scss">
-  .container {
-    background-color: bisque;
+<style scoped>
+  .virtual-list-container {
+    overflow-y: auto;
   }
 
-  .test {
-    color: pink;
+  .virtual-list {
+    position: relative;
   }
-</style>
+
+  .virtual-list .list-item {
+    position: absolute;
+  }
+</style> -->

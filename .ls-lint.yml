@@ -18,6 +18,7 @@ ignore:
   - node_modules
   - dist
   - es
+  - src
   - lib
   - .git
   - .husky
