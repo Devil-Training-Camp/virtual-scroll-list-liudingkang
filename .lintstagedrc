@@ -1,5 +1,5 @@
 {
-  "*": ["ls-lint"],
-  "**/*.{js,vue,ts}": ["eslint --fix"],
-  "{src,demo}/**/*.{css,scss,sass,vue}": ["stylelint --fix"]
+  "add/*": ["ls-lint"],
+  "add/**/*.{js,vue,ts}": ["eslint --fix"],
+  "add/{src,demo}/**/*.{css,scss,sass,vue}": ["stylelint --fix"]
 }

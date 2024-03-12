@@ -1,26 +1,26 @@
 type Timer = null | number;
-type RestFunc = (...rest: unknown[]) => void;
-export function throttle(func: RestFunc, time = 0, immediate = true) {
+export type RestFunc = (...args: unknown[]) => void;
+export function throttle<T extends RestFunc>(func: T, time = 0, immediate = true) {
   let timer: Timer = null;
-  return function (this: Window, ...rest: unknown[]) {
+  return function (this: unknown, ...args: Parameters<T>) {
     if (immediate) {
-      func.call(this, ...rest);
+      func.call(this, ...args);
       immediate = false;
     }
     if (timer == null) {
       timer = setTimeout(() => {
-        func.call(this, ...rest);
+        func.call(this, ...args);
         timer = null;
       }, time);
     }
   };
 }
-export function RAFThrottle(func: RestFunc) {
+export function RAFThrottle<T extends RestFunc>(func: T) {
   let flag = false;
-  return function (this: Window, ...rest: unknown[]) {
+  return function (this: unknown, ...args: Parameters<T>) {
     if (!flag) {
       window.requestAnimationFrame(() => {
-        func.call(this, ...rest);
+        func.call(this, ...args);
         flag = false;
       });
       flag = true;

@@ -1,24 +1,25 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
   import { computed, watchEffect } from 'vue';
 
   import { ListItem } from '../list-item';
-  import type { DynamicListProps, DynamicListEmits } from '../dynamic-list/props';
+
+  import type { DynamicListProps, DynamicListEmits } from './props';
+  import { useRenderer } from './useRenderer';
 
   import { useScroller } from '@/hooks/useScroller.js';
-  import { useRenderer } from '@/hooks/useRenderer.js';
 
-  const defaultProps: DynamicListProps = {
+  const defaultProps = {
     itemSize: 70,
     itemClass: '',
     itemKey: 'id',
-    data: [],
+    data: () => [],
     width: 100,
     height: 300,
     cache: 2,
     distance: 0,
   };
 
-  const props = withDefaults(defineProps<DynamicListProps>(), propsDefault);
+  const props = withDefaults(defineProps<DynamicListProps>(), defaultProps);
   const emits = defineEmits<DynamicListEmits>();
 
   // item 总数
@@ -63,7 +64,7 @@
     >
       <ListItem
         v-for="{ itemData, top, height, index } in renderData"
-        :key="itemData[itemKey] || index"
+        :key="(itemData[itemKey] as string) || index"
         :item-class="itemClass"
         :item-data="itemData"
         :item-index="index"
@@ -72,8 +73,8 @@
           height: height + 'px',
         }"
       >
-        <template #default="props">
-          <slot v-bind="props"></slot>
+        <template #default="itemProps">
+          <slot v-bind="itemProps"></slot>
         </template>
       </ListItem>
     </div>
@@ -92,4 +93,5 @@
   .virtual-list .list-item {
     position: absolute;
   }
-</style> -->
+</style>
+@/packages/fixed-size-list/useRenderer.js./props

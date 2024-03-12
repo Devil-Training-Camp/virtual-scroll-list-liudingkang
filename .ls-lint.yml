@@ -14,11 +14,14 @@ ls:
   .module.scss: kebab-case
   .config.js: pointcase
 
+  src/hooks:
+    .js: camelCase
+    .ts: camelCase
+
 ignore:
   - node_modules
   - dist
   - es
-  - src
   - lib
   - .git
   - .husky

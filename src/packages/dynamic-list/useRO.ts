@@ -1,6 +1,6 @@
-import { useResizeObserver } from "./common/useResizeObserver";
+import { useResizeObserver } from './useResizeObserver';
 
-export const useRO = (positions) => {
+export const useRO = positions => {
   const updateItemsHeight = (index, newHeight) => {
     // console.log('upitem', index, newHeight);
     const pos = positions[index];
@@ -10,7 +10,7 @@ export const useRO = (positions) => {
       positions[i].top += diff; // 更新当前 item 后所有item 的高度
     }
   };
-  const updatePositions = (entries) => {
+  const updatePositions = entries => {
     for (const { borderBoxSize, target } of entries) {
       const boxSize = borderBoxSize[0]; // 变化的 item 的 size
       const index = Number(target.dataset.index);
@@ -18,7 +18,7 @@ export const useRO = (positions) => {
         updateItemsHeight(index, boxSize.blockSize); // 更新当前 item 的 pos
       }
     }
-  }
+  };
   // 监听 item 改变
   useResizeObserver('resizeOb', updatePositions);
-}
+};

@@ -3,7 +3,7 @@
 
   import { props } from './props';
 
-  import { useResizeObserve } from '@/hooks/common/useResizeObserver';
+  import { useResizeObserve } from '@/hooks/useResizeObserver';
 
   defineProps(props);
 
@@ -32,3 +32,4 @@
     color: #213547;
   }
 </style>
+@/hooks/useResizeObserver
