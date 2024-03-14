@@ -18,6 +18,7 @@ export const devOptions = {
       globals: {
         vue: 'Vue',
       },
+      sourcemap: true,
     },
   ],
   plugins: [

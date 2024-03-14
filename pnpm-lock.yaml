@@ -37,6 +37,9 @@ devDependencies:
   '@release-it/conventional-changelog':
     specifier: ^7.0.2
     version: 7.0.2(release-it@16.3.0)
+  '@rollup/plugin-alias':
+    specifier: ^5.1.0
+    version: 5.1.0(rollup@3.29.4)
   '@rollup/plugin-babel':
     specifier: ^6.0.4
     version: 6.0.4(@babel/core@7.24.0)(rollup@3.29.4)
@@ -2617,6 +2620,19 @@ packages:
       conventional-recommended-bump: 8.0.0
       release-it: 16.3.0(typescript@5.2.2)
       semver: 7.6.0
+    dev: true
+
+  /@rollup/plugin-alias@5.1.0(rollup@3.29.4):
+    resolution: {integrity: sha512-lpA3RZ9PdIG7qqhEfv79tBffNaoDuukFDrmhLqg9ifv99u/ehn+lOg30x2zmhf8AQqQUZaMk/B9fZraQ6/acDQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      rollup: 3.29.4
+      slash: 4.0.0
     dev: true
 
   /@rollup/plugin-babel@6.0.4(@babel/core@7.24.0)(rollup@3.29.4):

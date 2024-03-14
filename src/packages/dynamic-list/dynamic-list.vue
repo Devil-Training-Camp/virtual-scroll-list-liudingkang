@@ -69,7 +69,7 @@
     >
       <ListItem
         v-for="{ itemData, top, index } in renderData"
-        :key="(itemData[itemKey] as string) || index"
+        :key="itemData instanceof Object ? (itemData[itemKey] as string) : index"
         :item-class="itemClass"
         :item-data="itemData"
         :item-index="index"

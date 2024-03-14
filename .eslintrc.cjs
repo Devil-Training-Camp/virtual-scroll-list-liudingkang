@@ -39,10 +39,10 @@ module.exports = {
     'import/resolver': {
       typescript: true,
       node: true,
-      alias: {
-        map: [['@', './src']],
-        extensions: ['.ts', '.js', '.vue', '.json'],
-      },
+      // alias: {
+      //   map: [['@', './src']],
+      //   extensions: ['.ts', '.js', '.vue', '.json'],
+      // },
     },
   },
   // 全局变量

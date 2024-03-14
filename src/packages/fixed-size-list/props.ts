@@ -1,6 +1,6 @@
 import { type ExtractPropTypes, type PropType } from 'vue';
 
-import type { AnyObject } from '@/utils/base';
+import type { ListItemData } from '../list-item/props';
 
 export const fixedSizeListProps = {
   // 每一项的高度
@@ -18,7 +18,7 @@ export const fixedSizeListProps = {
   },
   // 数据
   data: {
-    type: Array as PropType<AnyObject[]>,
+    type: Array as PropType<ListItemData[]>,
     default: () => [],
   },
   // 可视区域宽度

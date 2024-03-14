@@ -6,6 +6,7 @@
   import { useResizeObserve } from '@/hooks/useResizeObserver';
 
   const { itemClass, itemData, itemIndex } = defineProps(listItemProps);
+  console.log(itemData);
 
   const itemRef = ref<HTMLDivElement | null>(null);
   useResizeObserve('resizeOb', itemRef);

@@ -6,8 +6,10 @@ import cssnanoPlugin from 'cssnano';
 import postcssPresetEnv from 'postcss-preset-env';
 import styles from 'rollup-plugin-styles';
 import esbuild, { minify } from 'rollup-plugin-esbuild';
+import alias from '@rollup/plugin-alias';
 
 import { CJS_DIR, ES_DIR, GLOBAL_NAME, PACKAGE_NAME } from '../common/constant.js';
+import { resolve } from '../common/utils.js';
 
 import base from './rollup.base.config.js';
 
@@ -49,7 +51,13 @@ export const esbuildOptions = {
     },
   ],
   external: ['vue'],
-  plugins: [...base.plugins, esbuild()],
+  plugins: [
+    ...base.plugins,
+    alias({
+      entries: [{ find: '@', replacement: resolve(ES_DIR) }],
+    }),
+    esbuild(),
+  ],
 };
 export const babelOptions = {
   ...base,
@@ -91,6 +99,9 @@ export const babelOptions = {
   external: ['vue'],
   plugins: [
     ...base.plugins,
+    alias({
+      entries: [{ find: '@', replacement: resolve(CJS_DIR) }],
+    }),
     babel({
       exclude: ['node_modules/**'],
       babelHelpers: 'runtime',
@@ -116,6 +127,9 @@ export const styleOptions = {
   ],
   plugins: [
     ...base.plugins,
+    alias({
+      entries: [{ find: '@', replacement: resolve(ES_DIR) }],
+    }),
     styles({
       // 遵从 assetFileNames 路径
       mode: 'extract',

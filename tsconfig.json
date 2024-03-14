@@ -9,6 +9,7 @@
     "dist/**/*"
   ], // 排除的文件
   "compilerOptions": {
+    "baseUrl": ".", // 模块解析基准路径
     "target": "ES2019", // 编译后的目标
     "lib": [
       "ES2020",
@@ -29,7 +30,7 @@
     "allowJs": true, // 允许 js
     "paths": {
       "@/*": [
-        "./src/*"
+        "src/*"
       ]
     },
   }
