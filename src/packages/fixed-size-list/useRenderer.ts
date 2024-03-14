@@ -1,14 +1,14 @@
 import { computed, reactive, ref, toRefs, watchSyncEffect } from 'vue';
 
-import { DynamicListProps } from '@/packages/fixed-size-list/props';
+import type { FixedSizeListProps } from '@/packages/fixed-size-list/props';
 
-export interface Position {
+export interface ListItemPosition {
   top: number;
   height: number;
   index: number;
 }
 
-export const useRenderer = (props: DynamicListProps) => {
+export const useRenderer = (props: FixedSizeListProps) => {
   const renderInfo = reactive({
     cacheStart: 0, // 上缓冲边界
     start: 0, // 可见元素起始位置
@@ -16,7 +16,7 @@ export const useRenderer = (props: DynamicListProps) => {
     cacheEnd: 0, // 下缓冲边界
   });
   // 缓存已经加载过的 item
-  const positions = reactive<Position[]>([]);
+  const positions = reactive<ListItemPosition[]>([]);
   // 当前已经缓存过的 item 的最大 index
   const maxItemIndex = ref(0);
   const initPositions = () => {

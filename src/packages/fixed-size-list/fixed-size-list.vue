@@ -3,24 +3,12 @@
 
   import { ListItem } from '../list-item';
 
-  import type { DynamicListProps, DynamicListEmits } from './props';
   import { useRenderer } from './useRenderer';
+  import { useScroller } from './useScroller';
+  import { type FixedSizeListEmits, fixedSizeListProps } from './props';
 
-  import { useScroller } from '@/hooks/useScroller.js';
-
-  const defaultProps = {
-    itemSize: 70,
-    itemClass: '',
-    itemKey: 'id',
-    data: () => [],
-    width: 100,
-    height: 300,
-    cache: 2,
-    distance: 0,
-  };
-
-  const props = withDefaults(defineProps<DynamicListProps>(), defaultProps);
-  const emits = defineEmits<DynamicListEmits>();
+  const props = defineProps(fixedSizeListProps);
+  const emits = defineEmits<FixedSizeListEmits>();
 
   // item 总数
   const itemsCount = computed(() => props.data.length);
@@ -94,4 +82,3 @@
     position: absolute;
   }
 </style>
-@/packages/fixed-size-list/useRenderer.js./props

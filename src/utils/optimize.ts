@@ -1,5 +1,5 @@
 type Timer = null | number;
-export type RestFunc = (...args: unknown[]) => void;
+export type RestFunc = <T>(...args: T[]) => void;
 export function throttle<T extends RestFunc>(func: T, time = 0, immediate = true) {
   let timer: Timer = null;
   return function (this: unknown, ...args: Parameters<T>) {

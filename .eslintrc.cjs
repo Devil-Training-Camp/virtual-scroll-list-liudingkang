@@ -30,8 +30,10 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    'vue/multi-word-component-names': [0],
     'import/namespace': [0],
-    'import/no-named-as-default-member': [0],
+    'import/no-named-as-default-member': [0], // 当存在命名导出时，提示使用命名导出
+    '@typescript-eslint/consistent-type-imports': [2], // type 标注类型导入
   },
   settings: {
     'import/resolver': {

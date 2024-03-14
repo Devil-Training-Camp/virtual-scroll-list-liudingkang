@@ -1,13 +1,13 @@
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  import { props } from './props';
+  import { listItemProps } from './props';
 
   import { useResizeObserve } from '@/hooks/useResizeObserver';
 
-  defineProps(props);
+  const { itemClass, itemData, itemIndex } = defineProps(listItemProps);
 
-  const itemRef = ref();
+  const itemRef = ref<HTMLDivElement | null>(null);
   useResizeObserve('resizeOb', itemRef);
 </script>
 
@@ -32,4 +32,3 @@
     color: #213547;
   }
 </style>
-@/hooks/useResizeObserver

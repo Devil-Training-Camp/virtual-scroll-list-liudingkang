@@ -44,7 +44,8 @@ function injectExport(script) {
 export async function compileSfc(filePath, format) {
   let source = await readFile(filePath, 'utf-8');
   removeSync(filePath);
-  const { descriptor } = parse(source, { sourceMap: false });
+  // 注意这里 要传入 filename 否则 parse 将无法正确的解析路径
+  const { descriptor } = parse(source, { filename: filePath, sourceMap: false });
   let { styles, template, script, scriptSetup } = descriptor;
   // hash 单文件路径生成 id
   const id = hash_sum(source);
@@ -58,7 +59,6 @@ export async function compileSfc(filePath, format) {
     id,
   });
   scriptContent += content;
-
   // console.dir(descriptor, { depth: 1 });
   // 处理 template
   if (template) {

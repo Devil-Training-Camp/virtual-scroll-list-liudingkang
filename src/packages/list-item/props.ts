@@ -1,5 +1,11 @@
-export const props = {
+import type { ExtractPropTypes, PropType } from 'vue';
+
+import type { AnyObject } from '@/utils/base';
+
+export const listItemProps = {
   itemClass: String,
-  itemData: {},
+  itemData: Object as PropType<AnyObject>,
   itemIndex: Number,
 };
+
+export type ListItemProps = ExtractPropTypes<typeof listItemProps>;

@@ -1,17 +1,18 @@
-<script setup>
+<script setup lang="ts">
   import { watchEffect } from 'vue';
 
-  import { DynamicListProps, DynamicListEmits } from '../fixed-size-list';
   import { ListItem } from '../list-item';
+  import type { FixedSizeListEmits } from '../fixed-size-list/props';
+  import { fixedSizeListProps } from '../fixed-size-list/props';
   import { useRenderer } from '../fixed-size-list/useRenderer';
+  import { useScroller } from '../fixed-size-list/useScroller';
 
   import { useRO } from './useRO';
 
   import { BSStartIndex } from '@/utils/optimize';
-  import { useScroller } from '@/hooks/useScroller';
 
-  const props = defineProps(DynamicListProps);
-  const emits = defineEmits(DynamicListEmits);
+  const props = defineProps(fixedSizeListProps);
+  const emits = defineEmits<FixedSizeListEmits>();
 
   // 渲染相关
   const {
@@ -68,7 +69,7 @@
     >
       <ListItem
         v-for="{ itemData, top, index } in renderData"
-        :key="itemData[itemKey] || index"
+        :key="(itemData[itemKey] as string) || index"
         :item-class="itemClass"
         :item-data="itemData"
         :item-index="index"
@@ -76,8 +77,8 @@
           top: top + 'px',
         }"
       >
-        <template #default="props">
-          <slot v-bind="props"></slot>
+        <template #default="itemProps">
+          <slot v-bind="itemProps"></slot>
         </template>
       </ListItem>
     </div>
@@ -97,3 +98,4 @@
     position: absolute;
   }
 </style>
+@/packages/fixed-size-list/useScroller

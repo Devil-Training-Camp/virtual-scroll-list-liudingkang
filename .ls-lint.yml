@@ -1,7 +1,7 @@
 ls:
   .dir: kebab-case
-  .js: kebab-case
-  .ts: kebab-case
+  .js: kebab-case | camelCase
+  .ts: kebab-case | camelCase
   .vue: kebab-case
   .d.ts: kebab-case
   .tsx: kebab-case
@@ -13,10 +13,6 @@ ls:
   .module.sass: kebab-case
   .module.scss: kebab-case
   .config.js: pointcase
-
-  src/hooks:
-    .js: camelCase
-    .ts: camelCase
 
 ignore:
   - node_modules
