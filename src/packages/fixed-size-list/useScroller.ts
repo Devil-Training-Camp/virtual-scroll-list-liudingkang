@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 
-import { RAFThrottle, type RestFunc } from '@/utils/optimize';
-import type { FixedSizeListEmits, FixedSizeListProps } from '@/packages/fixed-size-list/props';
+import { RAFThrottle, type RestFunc } from '../../utils';
+import type { FixedSizeListEmits, FixedSizeListProps } from '../fixed-size-list/props';
 
 export const useScroller = (props: FixedSizeListProps, emits: FixedSizeListEmits) => {
   const scrollTop = ref(0);

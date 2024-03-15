@@ -7,6 +7,9 @@
   import { useScroller } from './useScroller';
   import { type FixedSizeListEmits, fixedSizeListProps } from './props';
 
+  defineOptions({
+    name: 'FixedSizeList',
+  });
   const props = defineProps(fixedSizeListProps);
   const emits = defineEmits<FixedSizeListEmits>();
 

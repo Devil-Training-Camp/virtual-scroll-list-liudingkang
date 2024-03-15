@@ -1,6 +1,6 @@
 import { computed, reactive, ref, toRefs, watchSyncEffect } from 'vue';
 
-import type { FixedSizeListProps } from '@/packages/fixed-size-list/props';
+import type { FixedSizeListProps } from '../fixed-size-list/props';
 
 export interface ListItemPosition {
   top: number;

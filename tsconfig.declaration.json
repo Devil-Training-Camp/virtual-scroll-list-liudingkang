@@ -16,10 +16,5 @@
     "outDir": ".",
     "emitDeclarationOnly": true, // 只输出声明文件
     "allowJs": false,
-    "paths": {
-      "@/*": [
-        "es/*"
-      ]
-    },
   }
 }

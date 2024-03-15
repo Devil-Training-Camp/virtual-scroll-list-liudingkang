@@ -1,6 +1,5 @@
 import type { ListItemPosition } from '../fixed-size-list/useRenderer';
-
-import { useResizeObserver } from '@/hooks/useResizeObserver';
+import { useResizeObserver } from '../../hooks/useResizeObserver';
 
 export const useRO = (positions: ListItemPosition[]) => {
   const updateItemsHeight = (index: number, newHeight: number) => {

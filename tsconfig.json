@@ -28,10 +28,5 @@
     "outDir": "./dist", // 输出文件夹
     "skipLibCheck": true, // 跳过类型检查 .d.ts类型脚本中包含的ts文件
     "allowJs": true, // 允许 js
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
   }
 }

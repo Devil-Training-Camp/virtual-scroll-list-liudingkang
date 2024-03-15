@@ -37,9 +37,6 @@ devDependencies:
   '@release-it/conventional-changelog':
     specifier: ^7.0.2
     version: 7.0.2(release-it@16.3.0)
-  '@rollup/plugin-alias':
-    specifier: ^5.1.0
-    version: 5.1.0(rollup@3.29.4)
   '@rollup/plugin-babel':
     specifier: ^6.0.4
     version: 6.0.4(@babel/core@7.24.0)(rollup@3.29.4)
@@ -65,7 +62,7 @@ devDependencies:
     specifier: ^6.7.5
     version: 6.21.0(eslint@8.57.0)(typescript@5.2.2)
   '@vitejs/plugin-vue':
-    specifier: ^4.4.0
+    specifier: ^4.6.2
     version: 4.6.2(vite@5.1.6)(vue@3.4.0)
   autoprefixer:
     specifier: ^10.4.16
@@ -94,9 +91,6 @@ devDependencies:
   eslint-config-standard:
     specifier: ^17.1.0
     version: 17.1.0(eslint-plugin-import@2.29.1)(eslint-plugin-n@16.6.2)(eslint-plugin-promise@6.1.1)(eslint@8.57.0)
-  eslint-import-resolver-alias:
-    specifier: ^1.1.2
-    version: 1.1.2(eslint-plugin-import@2.29.1)
   eslint-import-resolver-typescript:
     specifier: ^3.6.1
     version: 3.6.1(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
@@ -2622,19 +2616,6 @@ packages:
       semver: 7.6.0
     dev: true
 
-  /@rollup/plugin-alias@5.1.0(rollup@3.29.4):
-    resolution: {integrity: sha512-lpA3RZ9PdIG7qqhEfv79tBffNaoDuukFDrmhLqg9ifv99u/ehn+lOg30x2zmhf8AQqQUZaMk/B9fZraQ6/acDQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      rollup: 3.29.4
-      slash: 4.0.0
-    dev: true
-
   /@rollup/plugin-babel@6.0.4(@babel/core@7.24.0)(rollup@3.29.4):
     resolution: {integrity: sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==}
     engines: {node: '>=14.0.0'}
@@ -5131,15 +5112,6 @@ packages:
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-n: 16.6.2(eslint@8.57.0)
       eslint-plugin-promise: 6.1.1(eslint@8.57.0)
-    dev: true
-
-  /eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.29.1):
-    resolution: {integrity: sha512-WdviM1Eu834zsfjHtcGHtGfcu+F30Od3V7I9Fi57uhBEwPkjDcii7/yW8jAT+gOhn4P/vOxxNAXbFAKsrrc15w==}
-    engines: {node: '>= 4'}
-    peerDependencies:
-      eslint-plugin-import: '>=1.4.0'
-    dependencies:
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
     dev: true
 
   /eslint-import-resolver-node@0.3.9:

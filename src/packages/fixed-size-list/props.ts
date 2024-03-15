@@ -13,7 +13,6 @@ export const fixedSizeListProps = {
   // 每一项的 key
   itemKey: {
     type: [String, Number],
-    required: true,
     default: 'id',
   },
   // 数据

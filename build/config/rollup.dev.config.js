@@ -4,7 +4,8 @@ import esbuild from 'rollup-plugin-esbuild';
 import del from 'rollup-plugin-delete';
 import styles from 'rollup-plugin-styles';
 import html from 'rollup-plugin-html2';
-import vue from 'rollup-plugin-vue';
+// import vue from 'rollup-plugin-vue';
+import vue from '@vitejs/plugin-vue';
 
 import base from './rollup.base.config.js';
 

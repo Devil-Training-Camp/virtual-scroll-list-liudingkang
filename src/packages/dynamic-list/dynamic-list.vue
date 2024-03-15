@@ -6,11 +6,13 @@
   import { fixedSizeListProps } from '../fixed-size-list/props';
   import { useRenderer } from '../fixed-size-list/useRenderer';
   import { useScroller } from '../fixed-size-list/useScroller';
+  import { BSStartIndex } from '../../utils';
 
   import { useRO } from './useRO';
 
-  import { BSStartIndex } from '@/utils/optimize';
-
+  defineOptions({
+    name: 'DynamicList',
+  });
   const props = defineProps(fixedSizeListProps);
   const emits = defineEmits<FixedSizeListEmits>();
 
@@ -98,4 +100,3 @@
     position: absolute;
   }
 </style>
-@/packages/fixed-size-list/useScroller

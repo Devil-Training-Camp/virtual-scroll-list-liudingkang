@@ -1,10 +1,13 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
+  import { useResizeObserve } from '../../hooks/useResizeObserver';
+
   import { listItemProps } from './props';
 
-  import { useResizeObserve } from '@/hooks/useResizeObserver';
-
+  defineOptions({
+    name: 'ListItem',
+  });
   const { itemClass, itemData, itemIndex } = defineProps(listItemProps);
   console.log(itemData);
 

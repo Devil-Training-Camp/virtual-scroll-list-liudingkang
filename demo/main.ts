@@ -1,11 +1,10 @@
 import { createApp } from 'vue';
 
-import { FixedSizeList } from '../es/packages/fixed-size-list';
+import Coms from '../src';
 
 import App from './App.vue';
 
-import '../es/packages/fixed-size-list/style';
 const app = createApp(App);
-console.log(FixedSizeList);
-app.use(FixedSizeList);
+console.log(Coms);
+app.use(Coms);
 app.mount('#app');

@@ -1,8 +1,6 @@
 <script setup>
   import { ref } from 'vue';
 
-  import { FixedSizeList } from '../es/packages/fixed-size-list';
-
   const data = ref(new Array(20).fill(0));
   const loading = ref(false);
   const loadData = () => {
