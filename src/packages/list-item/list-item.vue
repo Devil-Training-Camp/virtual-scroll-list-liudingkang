@@ -9,7 +9,6 @@
     name: 'ListItem',
   });
   const { itemClass, itemData, itemIndex } = defineProps(listItemProps);
-  console.log(itemData);
 
   const itemRef = ref<HTMLDivElement | null>(null);
   useResizeObserve('resizeOb', itemRef);

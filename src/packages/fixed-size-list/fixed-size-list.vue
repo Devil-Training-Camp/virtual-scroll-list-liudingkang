@@ -21,8 +21,8 @@
     start, // 可见元素起始位置
     end, // 可见元素结束位置
     cacheEnd, // 下缓冲边界
-    containerStyle, // 占位元素样式
-    listStyle, // 可视区域样式
+    containerStyle, // 可视区域样式
+    listStyle, // 占位元素样式
     renderData, // 视图渲染数据
   } = useRenderer(props);
   // 滚动相关

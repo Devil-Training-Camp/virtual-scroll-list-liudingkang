@@ -24,7 +24,7 @@ export const useRenderer = (props: FixedSizeListProps) => {
     for (let index = maxItemIndex.value; index < len; index++) {
       positions[index] = {
         top: index == 0 ? 0 : positions[index - 1].top + positions[index - 1].height,
-        height: props.itemSize as number,
+        height: props.itemSize,
         index,
       };
     }
@@ -56,6 +56,5 @@ export const useRenderer = (props: FixedSizeListProps) => {
     containerStyle,
     listStyle,
     renderData,
-    initPositions,
   };
 };

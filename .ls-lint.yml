@@ -22,4 +22,5 @@ ignore:
   - .git
   - .husky
   - .vscode
+  - docs/.vitepress
   - demo/App.vue

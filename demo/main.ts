@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 
 import Coms from '../src';
 
-import App from './App.vue';
+import App from './demo1.vue';
 
 const app = createApp(App);
 console.log(Coms);

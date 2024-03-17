@@ -5,7 +5,7 @@ export const useResizeObserver = (name = 'resizeOb', cb: ResizeObserverCallback)
   provide(name, resizeOb);
 };
 export const useResizeObserve = (name = 'resizeOb', targetRef: Ref<HTMLDivElement | null>) => {
-  const resizeOb = inject<ResizeObserver>(name);
+  const resizeOb = inject<ResizeObserver | null>(name, null);
   if (resizeOb) {
     onMounted(() => {
       if (targetRef.value) {
@@ -14,7 +14,7 @@ export const useResizeObserve = (name = 'resizeOb', targetRef: Ref<HTMLDivElemen
     });
     onBeforeUnmount(() => {
       if (targetRef.value) {
-        resizeOb.observe(targetRef.value);
+        resizeOb.unobserve(targetRef.value);
       }
     });
   }
