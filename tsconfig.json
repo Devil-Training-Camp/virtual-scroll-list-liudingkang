@@ -2,11 +2,14 @@
   "include": [
     "demo/**/*",
     "src/**/*",
-    "component.d.ts"
+    "docs/**/*",
+    "component.d.ts",
   ], // 包含的文件
   "exclude": [
     "node_modules",
-    "dist/**/*"
+    "dist/**/*",
+    "docs/.vitepress/dist",
+    "docs/.vitepress/cache"
   ], // 排除的文件
   "compilerOptions": {
     "baseUrl": ".", // 模块解析基准路径

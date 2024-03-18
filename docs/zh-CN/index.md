@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "My Virtual-Scroll-List"
-  text: "A Components Docs Site"
+  name: 'My Virtual-Scroll-List'
+  text: 'A Components Docs Site'
   tagline: My great project tagline
   actions:
     - theme: brand
@@ -15,11 +15,10 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
+  - title: 高性能
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-
