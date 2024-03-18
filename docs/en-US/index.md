@@ -3,22 +3,22 @@
 layout: home
 
 hero:
-  name: 'My Virtual-Scroll-List'
-  text: 'A Components Docs Site'
-  tagline: My great project tagline
+  name: 'Virtual-Scroll-List'
+  # text: 'Is a component library'
+  tagline: Is a component library developed based on Vue3
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get Started
+      link: /en-US/overview
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: View components
+      link: /en-US/fixed-size-list
 
 features:
-  - title: Feature A
+  - title: Height performance
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
+  - title: On-Demand
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
+  - title: Locale
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---

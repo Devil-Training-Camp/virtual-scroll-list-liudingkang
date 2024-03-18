@@ -3,22 +3,22 @@
 layout: home
 
 hero:
-  name: 'My Virtual-Scroll-List'
-  text: 'A Components Docs Site'
-  tagline: My great project tagline
+  name: 'Virtual-Scroll-List'
+  # text: '一个虚拟列表组件库'
+  tagline: 基于 Vue 3，面向设计师和开发者的虚拟列表组件库
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 快速开始
+      link: /zh-CN/overview
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 查看组件
+      link: /zh-CN/fixed-size-list
 
 features:
   - title: 高性能
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
+  - title: 按需引入
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
+  - title: 国际化
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
