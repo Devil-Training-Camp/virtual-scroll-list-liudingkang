@@ -7,7 +7,10 @@ export type ListItemData = AnyObject | number | string;
 export const listItemProps = {
   itemClass: String,
   itemData: [Object, Number, String] as PropType<ListItemData>,
-  itemIndex: Number,
+  itemIndex: {
+    type: Number,
+    default: 0,
+  },
 };
 
 export type ListItemProps = ExtractPropTypes<typeof listItemProps>;

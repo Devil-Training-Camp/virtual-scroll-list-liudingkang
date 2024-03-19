@@ -17,25 +17,29 @@ export async function generateLocals() {
 
 export async function generateBasicItems(localeName: string) {
   const componentEntries = await glob(`src/packages/*/`);
-  const basicItems = componentEntries.reduce((prev: DefaultTheme.SidebarItem[], entry) => {
-    const componentName = path.basename(entry);
-    prev.push({ text: `${componentName}`, link: `/${localeName}/${componentName}` });
-    return prev;
-  }, []);
+  const basicItems = componentEntries
+    .reduce((prev: DefaultTheme.SidebarItem[], entry) => {
+      const componentName = path.basename(entry);
+      prev.push({ text: `${componentName}`, link: `/${localeName}/${componentName}` });
+      return prev;
+    }, [])
+    .reverse();
   return basicItems;
 }
 export async function generateDevelopItems(localeName: string) {
   const developEntries = await glob(`docs/${localeName}/*`);
-  const developItems = developEntries.reduce((prev: DefaultTheme.SidebarItem[], entry) => {
-    const mdName = path.basename(entry, '.md');
-    if (mdName == 'index') {
+  const developItems = developEntries
+    .reduce((prev: DefaultTheme.SidebarItem[], entry) => {
+      const mdName = path.basename(entry, '.md');
+      if (mdName == 'index') {
+        return prev;
+      }
+      prev.push({
+        text: `${mdName}`,
+        link: `/${localeName}/${mdName}`,
+      });
       return prev;
-    }
-    prev.push({
-      text: `${mdName}`,
-      link: `/${localeName}/${mdName}`,
-    });
-    return prev;
-  }, []);
+    }, [])
+    .reverse();
   return developItems;
 }

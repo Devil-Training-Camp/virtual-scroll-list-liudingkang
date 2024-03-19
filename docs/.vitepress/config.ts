@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 import { generateLocals } from './generator';
+import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock';
 
 const locales = await generateLocals();
 // https://vitepress.dev/reference/site-config
@@ -16,6 +17,19 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     i18nRouting: true,
-    socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+    socialLinks: [
+      {
+        icon: 'github',
+        link: 'https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang',
+      },
+    ],
+  },
+  markdown: {
+    config: md => {
+      md.use(demoblockPlugin);
+    },
+  },
+  vite: {
+    plugins: [demoblockVitePlugin()],
   },
 });
