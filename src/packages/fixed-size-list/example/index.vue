@@ -1,8 +1,11 @@
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import { FixedSizeList } from '..';
 
+  defineOptions({
+    name: 'FixedSizeListDemo',
+  });
   const data = ref(new Array(20).fill(0));
   const loading = ref(false);
   const loadData = () => {

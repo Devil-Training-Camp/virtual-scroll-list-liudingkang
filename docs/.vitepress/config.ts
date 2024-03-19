@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress';
 import { generateLocals } from './generator';
-import { demoblockPlugin, demoblockVitePlugin } from 'vitepress-theme-demoblock';
+// import { applyPlugins } from '@ruabick/md-demo-plugins';
+import applyPlugins from 'markdown-it-vitepress-demo';
 
 const locales = await generateLocals();
 // https://vitepress.dev/reference/site-config
@@ -26,10 +27,7 @@ export default defineConfig({
   },
   markdown: {
     config: md => {
-      md.use(demoblockPlugin);
+      applyPlugins(md);
     },
-  },
-  vite: {
-    plugins: [demoblockVitePlugin()],
   },
 });
