@@ -1,7 +1,8 @@
 import { defineConfig } from 'vitepress';
 import { generateLocals } from './generator';
-// import { applyPlugins } from '@ruabick/md-demo-plugins';
-import applyPlugins from 'markdown-it-vitepress-demo';
+import { applyPlugins } from '@ruabick/md-demo-plugins';
+import { wrapTablePlugin } from './md-table-plugin';
+// import applyPlugins from 'markdown-it-vitepress-demo';
 
 const locales = await generateLocals();
 // https://vitepress.dev/reference/site-config
@@ -28,6 +29,7 @@ export default defineConfig({
   markdown: {
     config: md => {
       applyPlugins(md);
+      wrapTablePlugin(md);
     },
   },
 });

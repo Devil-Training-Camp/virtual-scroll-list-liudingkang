@@ -1,15 +1,24 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
-  import { FixedSizeList } from '..';
+  import { DynamicList } from '..';
+
   defineOptions({
-    name: 'FixedSizeListDemo',
+    name: 'DynamicListDemo',
   });
-  const data = ref(new Array(10000).fill(0));
+
+  const mockData = (num = 20) => {
+    let data = [];
+    for (let index = 0; index < num; index++) {
+      data.push(70 + Math.ceil((Math.random() - 0.5) * 70));
+    }
+    return data;
+  };
+  const data = ref(mockData(10000));
 </script>
 
 <template>
-  <FixedSizeList
+  <DynamicList
     :item-size="70"
     item-class="item"
     :height="300"
@@ -18,12 +27,15 @@
     <template #default="{ item, index }">
       <div
         :class="['list-item', index % 2 ? 'list-item-odd' : 'list-item-even']"
-        style="height: 100%"
+        :style="{
+          height: item + 'px',
+          boxSizing: 'border-box',
+        }"
       >
-        {{ item }} - {{ index }}
+        {{ index }}
       </div>
     </template>
-  </FixedSizeList>
+  </DynamicList>
 </template>
 
 <style scoped>

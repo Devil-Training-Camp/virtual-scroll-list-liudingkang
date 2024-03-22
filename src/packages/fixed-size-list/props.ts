@@ -22,8 +22,8 @@ export const fixedSizeListProps = {
   },
   // 可视区域宽度
   width: {
-    type: Number,
-    default: 100,
+    type: [Number, String],
+    default: '100%',
   },
   // 可视区域高度
   height: {
