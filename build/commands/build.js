@@ -1,7 +1,7 @@
 import { logger } from 'rslog';
 import { copy, remove } from 'fs-extra';
 
-import { CJS_DIR, ES_DIR, SRC_DIR } from '../common/constant.js';
+import { CJS_DIR, ES_DIR, IGNORE_DIRS_RE, SRC_DIR } from '../common/constant.js';
 import { buildStyleEntry } from '../compiler/gen-component-style.js';
 import { buildModuleEntry } from '../compiler/gen-module-entry.js';
 import { compileBundle, compileModule } from '../compiler/compile-module.js';
@@ -10,7 +10,13 @@ import { setBuildConfig } from '../config/config.js';
 
 async function copySource() {
   await Promise.all([remove(ES_DIR), remove(CJS_DIR)]);
-  await Promise.all([copy(SRC_DIR, ES_DIR)], copy(SRC_DIR, CJS_DIR));
+  await Promise.all(
+    [copy(SRC_DIR, ES_DIR, { filter: copyFilter })],
+    copy(SRC_DIR, CJS_DIR, { filter: copyFilter }),
+  );
+}
+function copyFilter(src) {
+  return !IGNORE_DIRS_RE.test(src);
 }
 
 const tasks = [
