@@ -23,4 +23,3 @@ ignore:
   - .husky
   - .vscode
   - docs
-  - demo/App.vue

@@ -1,6 +1,8 @@
-import { DefaultTheme } from 'vitepress';
-import { Locale } from '../types';
 import path from 'path';
+
+import type { DefaultTheme } from 'vitepress';
+
+import type { Locale } from '../types';
 import { generateBasicItems, generateDevelopItems } from '../generator';
 
 export const name = path.basename(__filename, '.ts');

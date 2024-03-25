@@ -6,9 +6,9 @@ import type { WithInstall } from './utils';
 
 const components: Component[] = [FixedSizeList, DynamicList];
 
-const install = (app: App) => {
+export const install = (app: unknown) => {
   components.forEach((component: Component) => {
-    (component as WithInstall<Component>).install(app);
+    (component as WithInstall<Component>).install(app as App);
   });
 };
 

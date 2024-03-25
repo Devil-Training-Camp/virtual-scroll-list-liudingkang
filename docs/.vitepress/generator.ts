@@ -1,8 +1,9 @@
-import { glob } from 'glob';
-import { DefaultTheme, LocaleConfig } from 'vitepress';
 import path from 'path';
 
-type LocaleModuleType = typeof import('../.vitepress/locales/zh-CN');
+import { glob } from 'glob';
+import type { DefaultTheme, LocaleConfig } from 'vitepress';
+
+import type { LocaleModuleType } from './types';
 
 export async function generateLocals() {
   const entries = await glob('docs/.vitepress/locales/*');
