@@ -1,6 +1,8 @@
-import { watch } from 'rollup';
+import { execSync } from 'child_process';
 
 export async function dev() {
-  const { devOptions } = await import('../config/rollup.dev.config.js');
-  watch(devOptions);
+  execSync('rollup -wc ./build/config/rollup.dev.config.js', {
+    stdio: 'inherit',
+    shell: true,
+  });
 }
