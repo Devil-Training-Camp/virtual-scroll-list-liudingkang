@@ -76,12 +76,13 @@
   .virtual-list-container {
     overflow-y: auto;
   }
-
+</style>
+<style scoped lang="scss">
   .virtual-list {
     position: relative;
-  }
 
-  .virtual-list .list-item {
-    position: absolute;
+    .list-item {
+      position: absolute;
+    }
   }
 </style>

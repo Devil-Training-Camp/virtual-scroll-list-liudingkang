@@ -48,7 +48,7 @@ export async function compileSfc(filePath, format) {
   const { descriptor } = parse(source, { filename: filePath, sourceMap: false });
   let { styles, template, script, scriptSetup } = descriptor;
   // hash 单文件路径生成 id
-  const id = hash_sum(source);
+  const id = hash_sum(source + filePath);
   // 检查是否存在 scoped 作用域的样式块
   const hasScope = styles.some(style => style.scoped);
   // 生成 scopeId
@@ -59,7 +59,7 @@ export async function compileSfc(filePath, format) {
     id,
   });
   scriptContent += content;
-  // console.dir(descriptor, { depth: 1 });
+  // console.dir(bindings, { depth: 1 });
   // 处理 template
   if (template) {
     const { code } = compileTemplate({
@@ -89,8 +89,9 @@ export async function compileSfc(filePath, format) {
   // console.dir(scriptContent, { depth: 1 });
 
   // 处理 css
-  for (const { content, lang, scoped } of styles) {
-    const cssFilePath = replaceExt(filePath, `.${lang}`);
+  let styleCode = '';
+  const cssFilePath = replaceExt(filePath, `.scss`);
+  for (const { content, scoped } of styles) {
     // vue 编译 css
     let { code } = compileSfcStyle({
       source: content,
@@ -98,7 +99,8 @@ export async function compileSfc(filePath, format) {
       id: scopeId,
       scoped,
     });
-    await outputFile(cssFilePath, code.trim(), 'utf-8');
-    await compileStyle(cssFilePath);
+    styleCode += code;
   }
+  await outputFile(cssFilePath, styleCode.trim(), 'utf-8');
+  await compileStyle(cssFilePath);
 }
