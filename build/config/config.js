@@ -1,15 +1,11 @@
-let config = {};
+import defaultConfig from './default.config.js';
+let config = {
+  ...defaultConfig,
+};
+
 export function setBuildConfig(options) {
-  config = {
-    ...config,
-    ...options,
-  };
+  Object.assign(config, options);
 }
 export async function getBuildConfig() {
-  const defaultConfig = (await import('./default.config.js')).default;
-  const mergeConfig = {
-    ...defaultConfig,
-    ...config,
-  };
-  return mergeConfig;
+  return config;
 }
