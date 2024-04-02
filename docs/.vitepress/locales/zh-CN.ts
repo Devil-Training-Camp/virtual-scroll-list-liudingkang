@@ -43,7 +43,7 @@ const themeConfig: DefaultTheme.Config = {
 
 export const locale: Locale = {
   label: '简体中文',
-  lang: 'zh-CN', // 可选，将作为 `lang` 属性添加到 `html` 标签中
-  link: '/zh-CN/', // 默认 /fr/ -- 显示在导航栏翻译菜单上，可以是外部的
+  lang: name, // 可选，将作为 `lang` 属性添加到 `html` 标签中
+  link: `/${name}/`, // 默认 /fr/ -- 显示在导航栏翻译菜单上，可以是外部的
   themeConfig,
 };
