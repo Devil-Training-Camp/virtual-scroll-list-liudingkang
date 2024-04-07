@@ -5,6 +5,7 @@ ls:
   .vue: kebab-case
   .d.ts: kebab-case
   .tsx: kebab-case
+
   .jsx: kebab-case
   .css: kebab-case
   .scss: kebab-case
@@ -13,6 +14,10 @@ ls:
   .module.sass: kebab-case
   .module.scss: kebab-case
   .config.js: pointcase
+  .config.ts: pointcase
+  src/**/__tests__:
+    .dir: snakecase
+    .spec.ts: kebab-case
 
 ignore:
   - node_modules

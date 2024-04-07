@@ -16,6 +16,7 @@ export default defineConfig({
     'src/packages/:pkg/docs/:lang(.+).md': ':lang/:pkg.md',
     'docs/:lang*': ':lang*',
   },
+  vite: {},
   locales,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
