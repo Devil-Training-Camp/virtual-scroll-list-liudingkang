@@ -18,4 +18,15 @@ program
     const { dev } = await import('./commands/dev.js');
     dev();
   });
+
+program
+  .command('test')
+  .description('Run test')
+  .option('-w, --watch', 'Watch files and return tests')
+  .option('-c, --component <componentName>', 'Test target component')
+  .option('-cov, --coverage', 'Generate the coverage')
+  .action(async options => {
+    const { test } = await import('./commands/test.js');
+    test(options);
+  });
 program.parse();
