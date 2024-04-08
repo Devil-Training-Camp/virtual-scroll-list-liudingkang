@@ -26,7 +26,7 @@
     renderData, // 视图渲染数据
   } = useRenderer(props);
   // 滚动相关
-  const { scrollTop, scrollHandler } = useScroller(props, emits);
+  const { scrollTop, scrollHandler, scrollEndHandler } = useScroller(props, emits);
   const updateRenderRange = () => {
     // 当前可视区域内可以显示的 item 数量
     const viewPortItemCount = computed(() => Math.ceil(props.height / props.itemSize));
@@ -48,6 +48,7 @@
     class="virtual-list-container"
     :style="containerStyle"
     @scroll="scrollHandler"
+    @scrollend="scrollEndHandler"
   >
     <div
       class="virtual-list"

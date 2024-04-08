@@ -32,7 +32,8 @@
     "docs:preview": "vitepress preview docs",
     "test": "node build/bin.js test",
     "test:watch": "node build/bin.js test -w",
-    "test:coverage": "node build/bin.js test -cov"
+    "test:coverage": "node build/bin.js test -cov",
+    "test:component": "node build/bin.js test --component "
   },
   "engines": {
     "node": ">=16.14.2"
@@ -129,6 +130,7 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.24.0",
-    "core-js": "^3.33.0"
+    "core-js": "^3.33.0",
+    "jsdom": "22.1.0"
   }
 }

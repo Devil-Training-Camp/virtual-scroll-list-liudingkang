@@ -28,7 +28,7 @@
     renderData, // 视图渲染数据
   } = useRenderer(props);
   // 滚动相关
-  const { scrollTop, scrollHandler } = useScroller(props, emits);
+  const { scrollTop, scrollHandler, scrollEndHandler } = useScroller(props, emits);
 
   const getEndIndex = () => {
     const len = props.data.length;
@@ -64,6 +64,7 @@
     class="virtual-list-container"
     :style="containerStyle"
     @scroll="scrollHandler"
+    @scrollend="scrollEndHandler"
   >
     <div
       class="virtual-list"

@@ -5,6 +5,20 @@ export default defineConfig({
   plugins: [vue()],
   // 测试
   test: {
-    environment: 'happy-dom',
+    environment: 'jsdom',
+    exclude: [
+      '**/example/**',
+      // '**/__tests__/**',
+      '**/docs/**',
+      '**/*.md',
+      '**/**.d.ts',
+      'build/**',
+      'demo/**',
+      'dist/**',
+      'docs/**',
+      'es/**',
+      'lib/**',
+      'node_modules/**',
+    ],
   },
 });

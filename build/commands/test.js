@@ -11,6 +11,7 @@ export async function test({ component, watch, coverage }) {
   if (component) {
     command += ` --dir src/packages/${component.trim()}`;
   }
+  console.log(command);
   execSync(command, {
     stdio: 'inherit',
     shell: true,

@@ -5,17 +5,22 @@ import type { FixedSizeListEmits, FixedSizeListProps } from '../fixed-size-list/
 
 export const useScroller = (props: FixedSizeListProps, emits: FixedSizeListEmits) => {
   const scrollTop = ref(0);
-  // 滚动事件
+  // 动画帧节流
   const scrollHandler = RAFThrottle((({ target }: Event) => {
     const { scrollTop: newScrollTop, scrollHeight } = target as Element;
-    // 动画帧节流
+    (target as Element).classList.add('virtual-list-scrolling');
+    console.log(newScrollTop, props.height, props.distance, scrollHeight);
     if (newScrollTop + props.height + props.distance >= scrollHeight) {
       emits('load');
     }
     scrollTop.value = newScrollTop;
   }) as RestFunc);
+  const scrollEndHandler = ({ target }: Event) => {
+    (target as Element).classList.remove('virtual-list-scrolling');
+  };
   return {
     scrollTop,
     scrollHandler,
+    scrollEndHandler,
   };
 };
