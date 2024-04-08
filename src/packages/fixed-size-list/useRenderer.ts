@@ -33,7 +33,7 @@ export const useRenderer = (props: FixedSizeListProps) => {
   watchSyncEffect(initPositions);
   // 可视区域样式
   const containerStyle = computed(() => ({
-    width: props.width + 'px',
+    width: props.width + (typeof props.width === 'number' ? 'px' : ''),
     height: props.height + 'px',
   }));
   // 占位元素样式

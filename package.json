@@ -30,7 +30,9 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "test": "vitest"
+    "test": "node build/bin.js test",
+    "test:watch": "node build/bin.js test -w",
+    "test:coverage": "node build/bin.js test -cov"
   },
   "engines": {
     "node": ">=16.14.2"
