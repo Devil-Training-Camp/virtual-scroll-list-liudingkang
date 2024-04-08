@@ -9,7 +9,6 @@ export const useScroller = (props: FixedSizeListProps, emits: FixedSizeListEmits
   const scrollHandler = RAFThrottle((({ target }: Event) => {
     const { scrollTop: newScrollTop, scrollHeight } = target as Element;
     (target as Element).classList.add('virtual-list-scrolling');
-    console.log(newScrollTop, props.height, props.distance, scrollHeight);
     if (newScrollTop + props.height + props.distance >= scrollHeight) {
       emits('load');
     }

@@ -130,7 +130,6 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.24.0",
-    "core-js": "^3.33.0",
-    "jsdom": "22.1.0"
+    "core-js": "^3.33.0"
   }
 }

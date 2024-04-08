@@ -1,8 +1,8 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
 
 import FixedSizeList from '../fixed-size-list.vue';
+import { delay, triggerScrollTo } from '../../../utils';
 
 describe('test fixed-size-list component props', () => {
   const data = new Array(10000).fill(0);
@@ -50,37 +50,61 @@ describe('test fixed-size-list component props', () => {
   });
 });
 describe('test fixed-size-list scroll', () => {
-  test('test fixed-size-list distance', async () => {
-    const data = new Array(5).fill(0);
-    let loading = false;
-    const loadData = () => {
-      console.log(34343);
-      loading = true;
-    };
+  test('test fixed-size-list scroll cache', async () => {
+    const data = new Array(20).fill(0);
 
     const wrapper = mount(FixedSizeList, {
       props: {
         data,
         height: 600,
         itemSize: 150,
-        distance: 50,
-        cache: 2,
-        onLoad: loadData,
+        cache: 4,
       },
     });
     const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
-    // elm.scrollTo({
-    //   top: 110,
-    // });
-    await nextTick();
-    // console.log((wrapper.find('.virtual-list-container').element as HTMLElement).scrollTop);
-    const scrollEvent = new Event('scroll', {
-      bubbles: true,
-      cancelable: true,
+    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(8);
+    await triggerScrollTo(elm, 0, 650);
+    await delay();
+    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(12);
+    await triggerScrollTo(elm, 0, 850);
+    await delay();
+    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(12);
+  });
+  test('test fixed-size-list scroll distance', async () => {
+    const data = new Array(5).fill(0);
+    const onLoad = vi.fn();
+
+    const wrapper = mount(FixedSizeList, {
+      props: {
+        data,
+        height: 600,
+        itemSize: 150,
+        distance: 100,
+        onLoad,
+      },
     });
-    elm.dispatchEvent(scrollEvent);
-    await nextTick();
-    console.log('out');
-    expect(loading).toBe(true);
+    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    await triggerScrollTo(elm, 0, 50);
+    await delay();
+    expect(onLoad).toBeCalledTimes(1);
+  });
+});
+describe('test fixed-size-list event', () => {
+  test('test fixed-size-list onload', async () => {
+    const data = new Array(5).fill(0);
+    const onLoad = vi.fn();
+
+    const wrapper = mount(FixedSizeList, {
+      props: {
+        data,
+        height: 600,
+        itemSize: 150,
+        onLoad,
+      },
+    });
+    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    await triggerScrollTo(elm, 0, 150);
+    await delay();
+    expect(onLoad).toBeCalledTimes(1);
   });
 });
