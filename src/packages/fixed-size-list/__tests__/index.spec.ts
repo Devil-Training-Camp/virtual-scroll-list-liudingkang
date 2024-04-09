@@ -1,7 +1,7 @@
 import { describe, expect, test, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 
-import FixedSizeList from '../fixed-size-list.vue';
+import { FixedSizeList } from '../';
 import { delay, triggerScrollTo } from '../../../utils';
 
 describe('test fixed-size-list component props', () => {
