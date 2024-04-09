@@ -1,4 +1,7 @@
 import { nextTick } from 'vue';
+import { mount, type ComponentMountingOptions } from '@vue/test-utils';
+import type { ComponentProps } from 'vue-component-type-helpers';
+import type { Component } from 'vue';
 
 export const delay = (time?: number) => {
   return new Promise(resolve => {
@@ -19,4 +22,8 @@ export const triggerScrollTo = async (target: HTMLElement, x: number = 0, y: num
     top: y,
   });
   await trigger(target, 'scroll');
+};
+export const prevMount = <T extends Component>(wrapper: Component, component: T) => {
+  return (option: ComponentMountingOptions<T, ComponentProps<typeof component>> | undefined) =>
+    mount(wrapper, option);
 };

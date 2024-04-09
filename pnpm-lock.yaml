@@ -217,6 +217,9 @@ devDependencies:
   vue:
     specifier: ^3.4.0
     version: 3.4.0(typescript@5.2.2)
+  vue-component-type-helpers:
+    specifier: ^2.0.11
+    version: 2.0.11
   vue-eslint-parser:
     specifier: ^9.3.2
     version: 9.4.2(eslint@8.57.0)
@@ -3957,7 +3960,7 @@ packages:
     resolution: {integrity: sha512-oo2u7vktOyKUked36R93NB7mg2B+N7Plr8lxp2JBGwr18ch6EggFjixSCdIVVLkT6Qr0z359Xvnafc9dcKyDUg==}
     dependencies:
       js-beautify: 1.15.1
-      vue-component-type-helpers: 2.0.10
+      vue-component-type-helpers: 2.0.11
     dev: true
 
   /@vueuse/core@10.9.0(vue@3.4.21):
@@ -12267,8 +12270,8 @@ packages:
     resolution: {integrity: sha512-gu73tuZfJgu+mvCSy4UZwd2JXykjK9zAZsfmDeut5dx/1a7FeTk0XwJsSuqQn+cuMCGVbIBfl+s53X4T19DnzQ==}
     dev: true
 
-  /vue-component-type-helpers@2.0.10:
-    resolution: {integrity: sha512-FC5fKJjDks3Ue/KRSYBdsiCaZa0kUPQfs8yQpb8W9mlO6BenV8G1z58xobeRMzevnmEcDa09LLwuXDwb4f6NMQ==}
+  /vue-component-type-helpers@2.0.11:
+    resolution: {integrity: sha512-8aluKz5oVC8PvVQAYgyIefOlqzKVmAOTCx2imbrFBVLbF7mnJvyMsE2A7rqX/4f4uT6ee9o8u3GcoRpUWc0xsw==}
     dev: true
 
   /vue-demi@0.14.7(vue@3.4.21):
