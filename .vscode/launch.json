@@ -5,12 +5,25 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch via NPM",
+      "name": "Launch vitepress dev",
       "request": "launch",
       "runtimeArgs": [
         "vitepress",
         "dev",
         "docs",
+      ],
+      "runtimeExecutable": "pnpm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node",
+    },
+    {
+      "name": "Launch dev",
+      "request": "launch",
+      "runtimeArgs": [
+        "node build/bin.js",
+        "dev",
       ],
       "runtimeExecutable": "pnpm",
       "skipFiles": [

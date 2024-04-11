@@ -28,6 +28,8 @@ export function RAFThrottle<T extends RestFunc>(func: T) {
   };
 }
 export const BSStartIndex = (arr: number[], num: number) => {
+  if (arr.length === 0) return -1;
+  if (arr.length === 1) return 0;
   let left = 0,
     right = arr.length - 1;
 

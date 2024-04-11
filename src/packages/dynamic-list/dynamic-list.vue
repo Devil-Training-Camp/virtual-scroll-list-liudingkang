@@ -41,6 +41,10 @@
   };
   const updateRenderRange = () => {
     const len = props.data.length;
+    if (len === 0) {
+      start.value = cacheStart.value = end.value = cacheEnd.value = 0;
+      return;
+    }
     // 可见元素起始位置
     start.value = BSStartIndex(
       positions.map(pos => pos.top),
@@ -61,7 +65,7 @@
 
 <template>
   <div
-    class="virtual-list-container"
+    class="virtual-list-container dynamic-list"
     :style="containerStyle"
     @scroll="scrollHandler"
     @scrollend="scrollEndHandler"

@@ -39,9 +39,10 @@ export const useRenderer = (props: FixedSizeListProps) => {
   // 占位元素样式
   const listStyle = computed(() => {
     const endPos = positions[positions.length - 1];
+    const height = endPos ? endPos.top + endPos.height : 0;
     return {
       width: '100%',
-      height: endPos.top + endPos.height + 'px',
+      height: height + 'px',
     };
   });
   // 渲染数据

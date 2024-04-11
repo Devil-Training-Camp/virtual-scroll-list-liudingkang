@@ -28,6 +28,10 @@
   // 滚动相关
   const { scrollTop, scrollHandler, scrollEndHandler } = useScroller(props, emits);
   const updateRenderRange = () => {
+    if (itemsCount.value === 0) {
+      start.value = cacheStart.value = end.value = cacheEnd.value = 0;
+      return;
+    }
     // 当前可视区域内可以显示的 item 数量
     const viewPortItemCount = computed(() => Math.ceil(props.height / props.itemSize));
     // 可见元素起始位置
@@ -45,7 +49,7 @@
 
 <template>
   <div
-    class="virtual-list-container"
+    class="virtual-list-container fixed-size-list"
     :style="containerStyle"
     @scroll="scrollHandler"
     @scrollend="scrollEndHandler"
