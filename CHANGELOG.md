@@ -1,5 +1,12 @@
 
 
+## [6.1.2](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.1...v6.1.2) (2024-04-22)
+
+
+### 👷‍ Build System | 构建
+
+* **build:** deps ext ([f89cd41](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/f89cd4170d07ce8573af6c35886fb697b6e63de6))
+
 ## [6.1.1](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.0...v6.1.1) (2024-04-18)
 
 ## [6.1.0](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.0.3-alpha.2.0...v6.1.0) (2024-04-18)
