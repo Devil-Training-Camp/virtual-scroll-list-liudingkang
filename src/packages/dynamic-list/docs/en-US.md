@@ -1,4 +1,4 @@
-# Fixed Size Virtual Scroll List
+# Dynamic Size Virtual Scroll List
 
 ## Basic usage
 
