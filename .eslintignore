@@ -1,0 +1,17 @@
+node_modules
+dist
+es
+lib
+# eslint 默认忽略 . 开头的目录
+!docs/.vitepress
+docs/.vitepress/dist
+docs/.vitepress/cache
+# build
+
+.husky
+.vscode
+.github
+
+
+*.d.ts
+# .eslintrc.cjs

@@ -1,0 +1,50 @@
+{
+  "path": "cz-conventional-changelog",
+  "disableEmoji": false,
+  "types": {
+    "feat": {
+      "value": "feat",
+      "description": "✨ Features | 新功能"
+    },
+    "fix": {
+      "value": "fix",
+      "description": "🐛 Bug Fixes | Bug 修复"
+    },
+    "perf": {
+      "value": "perf",
+      "description": "⚡ Performance Improvements | 性能优化"
+    },
+    "revert": {
+      "value": "revert",
+      "description": "⏪ Reverts | 回退"
+    },
+    "chore": {
+      "value": "chore",
+      "description": "📦 Chores | 其他更新"
+    },
+    "docs": {
+      "value": "docs",
+      "description": "📝 Documentation | 文档"
+    },
+    "style": {
+      "value": "style",
+      "description": "💄 Styles | 风格"
+    },
+    "refactor": {
+      "value": "refactor",
+      "description": "♻ Code Refactoring | 代码重构"
+    },
+    "test": {
+      "value": "test",
+      "description": "✅ Tests | 测试"
+    },
+    "build": {
+      "value": "build",
+      "description": "👷‍ Build System | 构建"
+    },
+    "ci": {
+      "value": "ci",
+      "description": "🔧 Continuous Integration | CI 配置"
+    }
+  }
+}

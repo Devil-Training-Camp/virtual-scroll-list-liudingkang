@@ -1,0 +1,33 @@
+{
+  "include": [
+    "src/**/*",
+    "component.d.ts",
+  ], // 包含的文件
+  "exclude": [
+    "node_modules",
+    "dist/**/*",
+    "es/**/*",
+    "lib/**/*"
+  ], // 排除的文件
+  "compilerOptions": {
+    "baseUrl": ".", // 模块解析基准路径
+    "target": "ES2019", // 编译后的目标
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ], // 指定一组描述目标运行时环境的捆绑库声明文件
+    "module": "ESNext", // 指定生成代码的模块化方式
+    "esModuleInterop": true, // 简化对导入CommonJS模块的支持。这使得`允许合成默认导入`以实现类型兼容性。
+    "moduleResolution": "node", // 模块解析方式
+    "resolveJsonModule": true, // 支持解析 json 模块
+    "strict": true, // 严格类型检测
+    // "noUnusedLocals": true, // 在未读取局部变量时报错。
+    // "noImplicitAny": false,
+    // "noImplicitThis": true, // 当`this`具有类型`any`时，启用错误报告
+    "isolatedModules": true, // 确保每个文件都可以安全地传输，而不依赖于其他导入
+    "outDir": "./dist", // 输出文件夹
+    "skipLibCheck": true, // 跳过类型检查 .d.ts类型脚本中包含的ts文件
+    "allowJs": true, // 允许 js
+  }
+}
