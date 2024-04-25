@@ -1,6 +1,6 @@
 {
   "name": "virtual-scroll-list-liudingkang",
-  "version": "6.1.5",
+  "version": "6.1.6",
   "private": false,
   "description": "a vue virtual-scroll-list",
   "main": "lib/virtual-scroll-list.cjs.js",

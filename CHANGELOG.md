@@ -1,5 +1,12 @@
 
 
+## [6.1.6](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.5...v6.1.6) (2024-04-25)
+
+
+### 📝 Documentation | 文档
+
+* **docs:** docs ([4efafa1](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/4efafa1c2027055937454f7e528eb544275d41a3))
+
 ## [6.1.5](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.4...v6.1.5) (2024-04-25)
 
 
