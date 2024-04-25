@@ -1,5 +1,12 @@
 
 
+## [6.1.5](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.4...v6.1.5) (2024-04-25)
+
+
+### 📦 Chores | 其他更新
+
+* **license:** license ([734a08a](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/734a08a0a8359ba7dd42053f61bc24a07f5a49b3))
+
 ## [6.1.4](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.3...v6.1.4) (2024-04-25)
 
 ## [6.1.3](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.2...v6.1.3) (2024-04-23)
