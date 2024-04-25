@@ -52,7 +52,7 @@
     "name": "grey-coat",
     "email": "461252486@qq.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "vue": "^3.3.4"
   },
