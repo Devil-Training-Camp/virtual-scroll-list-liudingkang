@@ -32,6 +32,5 @@
     position: absolute;
     right: 0;
     left: 0;
-    color: #213547;
   }
 </style>
