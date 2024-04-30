@@ -81,7 +81,7 @@ createApp(App).use(Comps).mount('#app')
 </style>
 ```
 
-### Attributes
+## Attributes
 
 | Name        | Description          | Type             | Default | Other                      |
 | ----------- | -------------------- | ---------------- | ------- | -------------------------- |

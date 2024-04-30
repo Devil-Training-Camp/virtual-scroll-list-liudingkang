@@ -20,6 +20,8 @@
     "module": "ESNext", // 指定生成代码的模块化方式
     "esModuleInterop": true, // 简化对导入CommonJS模块的支持。这使得`允许合成默认导入`以实现类型兼容性。
     "moduleResolution": "node", // 模块解析方式
+    // "declaration": true, // 自动生成声明文件
+    // "declarationDir": "./dist/types", // 输出时声明文件的文件夹
     "resolveJsonModule": true, // 支持解析 json 模块
     "strict": true, // 严格类型检测
     // "noUnusedLocals": true, // 在未读取局部变量时报错。
