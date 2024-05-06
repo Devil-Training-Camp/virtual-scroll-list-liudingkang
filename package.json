@@ -1,6 +1,6 @@
 {
   "name": "virtual-scroll-list-liudingkang",
-  "version": "6.1.3",
+  "version": "6.1.6",
   "private": false,
   "description": "a vue virtual-scroll-list",
   "main": "lib/virtual-scroll-list.cjs.js",
@@ -13,6 +13,9 @@
   ],
   "scripts": {
     "build": "node build/bin.js build",
+    "build2": "rollup -c ./build/config/test.config.js",
+    "build3": "rollup -c ./build/config/test.chunk.config.js",
+    "build4": "rollup -c ./build/config/test.preserve.config.js",
     "dev": "node build/bin.js dev",
     "build1": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js && tsc -p ./tsconfig.declaration.json -declarationDir dist/es  && tsc -p ./tsconfig.declaration.json -declarationDir dist/lib",
     "dev1": "rollup -wc ./build/config/rollup.dev.config.js",
@@ -52,7 +55,7 @@
     "name": "grey-coat",
     "email": "461252486@qq.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "vue": "^3.3.4"
   },

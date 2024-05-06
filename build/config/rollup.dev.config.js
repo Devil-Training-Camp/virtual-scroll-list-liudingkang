@@ -38,7 +38,7 @@ export const devOptions = {
       onlinePath: '.',
     }),
     serve({
-      // open: true,
+      open: true,
       openPage: '/dist/index.html',
       port: 8080,
     }),

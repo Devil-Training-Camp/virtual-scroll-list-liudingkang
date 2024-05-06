@@ -1,28 +1,20 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
-
+  const genText = (base = 15) => {
+    const times = base + Math.ceil((Math.random() - 0.5) * base);
+    return Array(times)
+      .fill(1)
+      .map(() => 'every')
+      .join(' ');
+  };
   const mockData = (num = 20) => {
     let data = [];
     for (let index = 0; index < num; index++) {
-      data.push(70 + Math.ceil((Math.random() - 0.5) * 30));
+      const times = 30 + Math.ceil((Math.random() - 0.5) * 30);
+      data.push(genText(times));
     }
     return data;
   };
-  const data = ref(mockData(10));
-  const loading = ref(false);
-  const loadData = () => {
-    if (!loading.value) {
-      loading.value = true;
-      setTimeout(() => {
-        let newData = mockData();
-        data.value.push.apply(data.value, newData);
-        loading.value = false;
-      }, 1000);
-    }
-  };
-  const clickHander = (index: number) => {
-    data.value[index] = 100 + Math.ceil((Math.random() - 0.5) * 50);
-  };
+  const data = mockData(5000);
 </script>
 
 <template>
@@ -32,18 +24,10 @@
     :width="300"
     :height="300"
     :data="data"
-    @load="loadData"
   >
     <template #default="{ item, index }">
-      <div
-        :class="['list-item', index % 2 ? 'list-item-odd' : 'list-item-even']"
-        :style="{
-          height: item + 'px',
-          boxSizing: 'border-box',
-        }"
-        @click="clickHander(index)"
-      >
-        {{ index }}
+      <div :class="['list-item', index % 2 ? 'list-item-odd' : 'list-item-even']">
+        {{ item }}
       </div>
     </template>
   </DynamicList>

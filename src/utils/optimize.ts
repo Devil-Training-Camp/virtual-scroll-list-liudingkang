@@ -1,4 +1,4 @@
-type Timer = null | number;
+type Timer = null | ReturnType<typeof setTimeout>;
 export type RestFunc = <T>(...args: T[]) => void;
 export function throttle<T extends RestFunc>(func: T, time = 0, immediate = true) {
   let timer: Timer = null;
