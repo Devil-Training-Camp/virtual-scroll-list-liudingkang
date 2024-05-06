@@ -7,6 +7,6 @@ export default FixedSizeList;
 
 declare module 'vue' {
   export interface GlobalComponents {
-    FixedSizeList: typeof FixedSizeList;
+    LdkFixedSizeList: typeof FixedSizeList;
   }
 }

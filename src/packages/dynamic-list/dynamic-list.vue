@@ -11,7 +11,7 @@
   import { useRO } from './useRO';
 
   defineOptions({
-    name: 'DynamicList',
+    name: 'LdkDynamicList',
   });
   const props = defineProps(fixedSizeListProps);
   const emits = defineEmits<FixedSizeListEmits>();
@@ -65,13 +65,13 @@
 
 <template>
   <div
-    class="virtual-list-container dynamic-list"
+    class="ldk-virtual-list-container ldk-dynamic-list"
     :style="containerStyle"
     @scroll="scrollHandler"
     @scrollend="scrollEndHandler"
   >
     <div
-      class="virtual-list"
+      class="ldk-virtual-list"
       :style="listStyle"
     >
       <ListItem
@@ -93,15 +93,11 @@
 </template>
 
 <style scoped>
-  .virtual-list-container {
+  .ldk-virtual-list-container {
     overflow-y: auto;
   }
 
-  .virtual-list {
+  .ldk-virtual-list {
     position: relative;
-  }
-
-  .virtual-list .list-item {
-    position: absolute;
   }
 </style>

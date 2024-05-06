@@ -60,7 +60,7 @@ describe('test dynamic-list component props', () => {
         itemClass: 'custom-item',
       },
     });
-    expect(wrapper.find('.virtual-list-item').classes()).toContain('custom-item');
+    expect(wrapper.find('.ldk-virtual-list-item').classes()).toContain('custom-item');
   });
   test('test dynamic-list width and height', () => {
     const wrapper = mount({
@@ -70,7 +70,7 @@ describe('test dynamic-list component props', () => {
         height: 600,
       },
     });
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
     expect(elm.style.width).toBe('300px');
     expect(elm.style.height).toBe('600px');
   });
@@ -83,7 +83,7 @@ describe('test dynamic-list component props', () => {
         cache: 2,
       },
     });
-    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(6);
+    expect(wrapper.findAll('.ldk-virtual-list-item')).toHaveLength(6);
   });
 });
 describe('test dynamic-list scroll', () => {
@@ -97,17 +97,17 @@ describe('test dynamic-list scroll', () => {
         cache: 4,
       },
     });
-    expect(wrapper.findAll('.virtual-list-item').length).toBeGreaterThan(6);
-    expect(wrapper.findAll('.virtual-list-item').length).toBeLessThan(10);
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    expect(wrapper.findAll('.ldk-virtual-list-item').length).toBeGreaterThan(6);
+    expect(wrapper.findAll('.ldk-virtual-list-item').length).toBeLessThan(10);
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
     await triggerScrollTo(elm, 0, 650);
     await delay();
-    expect(wrapper.findAll('.virtual-list-item').length).toBeGreaterThan(10);
-    expect(wrapper.findAll('.virtual-list-item').length).toBeLessThan(14);
+    expect(wrapper.findAll('.ldk-virtual-list-item').length).toBeGreaterThan(10);
+    expect(wrapper.findAll('.ldk-virtual-list-item').length).toBeLessThan(14);
     await triggerScrollTo(elm, 0, 1650);
     await delay();
-    expect(wrapper.findAll('.virtual-list-item').length).toBeGreaterThan(10);
-    expect(wrapper.findAll('.virtual-list-item').length).toBeLessThan(14);
+    expect(wrapper.findAll('.ldk-virtual-list-item').length).toBeGreaterThan(10);
+    expect(wrapper.findAll('.ldk-virtual-list-item').length).toBeLessThan(14);
   });
   test('test dynamic-list scroll distance', async () => {
     const data = mockData(5, 150);
@@ -122,7 +122,7 @@ describe('test dynamic-list scroll', () => {
         onLoad,
       },
     });
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
     await triggerScrollTo(elm, 0, data.reduce((prev, item) => (prev += item), 0) - 100);
     await delay();
     expect(onLoad).toBeCalledTimes(1);
@@ -140,7 +140,7 @@ describe('test dynamic-list event', () => {
         onLoad,
       },
     });
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
     await triggerScrollTo(elm, 0, 150);
     await delay();
     expect(onLoad).toBeCalledTimes(1);

@@ -8,7 +8,7 @@
   import { type FixedSizeListEmits, fixedSizeListProps } from './props';
 
   defineOptions({
-    name: 'FixedSizeList',
+    name: 'LdkFixedSizeList',
   });
   const props = defineProps(fixedSizeListProps);
   const emits = defineEmits<FixedSizeListEmits>();
@@ -49,13 +49,13 @@
 
 <template>
   <div
-    class="virtual-list-container fixed-size-list"
+    class="ldk-virtual-list-container ldk-fixed-size-list"
     :style="containerStyle"
     @scroll="scrollHandler"
     @scrollend="scrollEndHandler"
   >
     <div
-      class="virtual-list"
+      class="ldk-virtual-list"
       :style="listStyle"
     >
       <ListItem
@@ -78,16 +78,12 @@
 </template>
 
 <style scoped>
-  .virtual-list-container {
+  .ldk-virtual-list-container {
     overflow-y: auto;
   }
 </style>
 <style scoped lang="scss">
-  .virtual-list {
+  .ldk-virtual-list {
     position: relative;
-
-    .list-item {
-      position: absolute;
-    }
   }
 </style>

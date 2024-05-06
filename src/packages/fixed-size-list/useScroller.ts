@@ -8,7 +8,7 @@ export const useScroller = (props: FixedSizeListProps, emits: FixedSizeListEmits
   // 动画帧节流
   const scrollHandler = RAFThrottle((({ target }: Event) => {
     const { scrollTop: newScrollTop, scrollHeight } = target as Element;
-    (target as Element).classList.add('virtual-list-scrolling');
+    (target as Element).classList.add('ldk-virtual-list-scrolling');
     if (newScrollTop + props.height + props.distance >= scrollHeight) {
       emits('load');
     }
