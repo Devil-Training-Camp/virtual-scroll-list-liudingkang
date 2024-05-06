@@ -1,5 +1,13 @@
 
 
+## [6.1.7](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.6...v6.1.7) (2024-05-06)
+
+
+### 👷‍ Build System | 构建
+
+* **add common prefix:** add common prefix ([92b477f](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/92b477fd5c6ea4795e703987e1aa17793deecb65))
+* **build demo:** build demo ([0c5a231](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/0c5a231fa8a61a4593193023a8e5cbaaa5db9e25))
+
 ## [6.1.6](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.5...v6.1.6) (2024-04-25)
 
 
