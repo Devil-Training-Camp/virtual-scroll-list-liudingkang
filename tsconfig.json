@@ -25,6 +25,7 @@
     // "noUnusedLocals": true, // 在未读取局部变量时报错。
     // "noImplicitAny": false,
     // "noImplicitThis": true, // 当`this`具有类型`any`时，启用错误报告
+    "outDir": "./dist",
     "isolatedModules": true, // 确保每个文件都可以安全地传输，而不依赖于其他导入
     "skipLibCheck": true, // 跳过类型检查 .d.ts类型脚本中包含的ts文件
     "allowJs": true, // 允许 js

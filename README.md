@@ -7,6 +7,7 @@ Is a virtual-scroll-list developed based on Vue3.
 - 🍭 Support `DynamicList` and `FixedSizeList`
 - 🍭 Support Tree Shaking
 - 🍭 Support import on demand
+- 🍭 Support auto-import and provide a solver
 
 ## Useage
 

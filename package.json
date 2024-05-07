@@ -9,10 +9,13 @@
   "type": "module",
   "files": [
     "es",
-    "lib"
+    "lib",
+    "import-resolver/lib"
   ],
   "scripts": {
-    "build": "node build/bin.js build",
+    "build:ui": "node build/bin.js build",
+    "build:re": "tsup import-resolver/src/index.ts --format esm,cjs --out-dir=import-resolver/lib --dts --clean",
+    "build": "pnpm build:re && pnpm build:ui",
     "dev": "node build/bin.js dev",
     "dev1": "rollup -wc ./build/config/rollup.dev.config.js",
     "eslint": "eslint --ext .vue,.ts,.js .",
@@ -35,9 +38,9 @@
     "test:component": "node build/bin.js test --component "
   },
   "engines": {
-    "node": ">=16.14.2"
+    "node": ">=16.14.2",
+    "pnpm": ">=8.7.0"
   },
-  "packageManager": "pnpm@8.7.0",
   "keywords": [
     "vue3",
     "virtual-scroll-list"
@@ -121,6 +124,7 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^6.0.3",
     "stylelint-prettier": "^4.0.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.2.2",
     "vitepress": "1.0.0-rc.45",
     "vitest": "^1.4.0",
