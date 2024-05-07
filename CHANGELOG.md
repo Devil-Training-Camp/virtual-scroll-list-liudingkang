@@ -1,5 +1,12 @@
 
 
+## [6.2.0](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.7...v6.2.0) (2024-5-7)
+
+
+### ✨ Features | 新功能
+
+* **auto-import:** auto-import ([0734d8e](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/commit/0734d8eefd1361acd47f55a55b345c69f63ae014))
+
 ## [6.1.7](https://github.com/Devil-Training-Camp/virtual-scroll-list-liudingkang/compare/v6.1.6...v6.1.7) (2024-05-06)
 
 
