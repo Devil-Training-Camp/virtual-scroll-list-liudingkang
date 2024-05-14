@@ -4,9 +4,10 @@ Is a virtual-scroll-list developed based on Vue3.
 
 - 💪 90%+ Unit test coverage
 - 💪 Written in TypeScript
-- 🍭 support `DynamicList` and `FixedSizeList`
+- 🍭 Support `DynamicList` and `FixedSizeList`
 - 🍭 Support Tree Shaking
 - 🍭 Support import on demand
+- 🍭 Support auto-import and provide a solver
 
 ## Useage
 
@@ -49,7 +50,7 @@ createApp(App).use(Comps).mount('#app')
 </script>
 
 <template>
-  <DynamicList
+  <LdkDynamicList
     :item-size="70"
     item-class="item"
     :width="300"
@@ -61,7 +62,7 @@ createApp(App).use(Comps).mount('#app')
         {{ item }}
       </div>
     </template>
-  </DynamicList>
+  </LdkDynamicList>
 </template>
 
 <style scoped>

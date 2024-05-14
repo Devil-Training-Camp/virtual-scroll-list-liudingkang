@@ -16,7 +16,7 @@
 </script>
 
 <template>
-  <FixedSizeList
+  <LdkDynamicList
     :item-size="70"
     item-class="item"
     :width="300"
@@ -32,7 +32,7 @@
         {{ item }} - {{ index }}
       </div>
     </template>
-  </FixedSizeList>
+  </LdkDynamicList>
 </template>
 
 <style scoped>

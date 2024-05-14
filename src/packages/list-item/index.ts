@@ -7,6 +7,6 @@ export default ListItem;
 
 declare module 'vue' {
   export interface GlobalComponents {
-    ListItem: typeof ListItem;
+    LdkListItem: typeof ListItem;
   }
 }

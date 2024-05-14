@@ -22,7 +22,9 @@ describe('test fixed-size-list component props', () => {
         data,
       },
     });
-    expect((wrapper.find('.virtual-list-item').element as HTMLElement).style.height).toBe('50px');
+    expect((wrapper.find('.ldk-virtual-list-item').element as HTMLElement).style.height).toBe(
+      '50px',
+    );
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
@@ -33,7 +35,7 @@ describe('test fixed-size-list component props', () => {
         itemClass: 'custom-item',
       },
     });
-    expect(wrapper.find('.virtual-list-item').classes()).toContain('custom-item');
+    expect(wrapper.find('.ldk-virtual-list-item').classes()).toContain('custom-item');
     expect(wrapper.html()).toMatchSnapshot();
   });
   test('test fixed-size-list width and height', () => {
@@ -44,7 +46,7 @@ describe('test fixed-size-list component props', () => {
         height: 600,
       },
     });
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
     expect(elm.style.width).toBe('300px');
     expect(elm.style.height).toBe('600px');
     expect(wrapper.html()).toMatchSnapshot();
@@ -58,7 +60,7 @@ describe('test fixed-size-list component props', () => {
         cache: 2,
       },
     });
-    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(6);
+    expect(wrapper.findAll('.ldk-virtual-list-item')).toHaveLength(6);
     expect(wrapper.html()).toMatchSnapshot();
   });
 });
@@ -74,16 +76,16 @@ describe('test fixed-size-list scroll', () => {
         cache: 4,
       },
     });
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
-    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(8);
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
+    expect(wrapper.findAll('.ldk-virtual-list-item')).toHaveLength(8);
     expect(wrapper.html()).toMatchSnapshot();
     await triggerScrollTo(elm, 0, 650);
     await delay();
-    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(12);
+    expect(wrapper.findAll('.ldk-virtual-list-item')).toHaveLength(12);
     expect(wrapper.html()).toMatchSnapshot();
     await triggerScrollTo(elm, 0, 850);
     await delay();
-    expect(wrapper.findAll('.virtual-list-item')).toHaveLength(12);
+    expect(wrapper.findAll('.ldk-virtual-list-item')).toHaveLength(12);
     expect(wrapper.html()).toMatchSnapshot();
   });
   test('test fixed-size-list scroll distance', async () => {
@@ -99,7 +101,7 @@ describe('test fixed-size-list scroll', () => {
         onLoad,
       },
     });
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
     await triggerScrollTo(elm, 0, 50);
     await delay();
     expect(onLoad).toBeCalledTimes(1);
@@ -119,7 +121,7 @@ describe('test fixed-size-list event', () => {
         onLoad,
       },
     });
-    const elm = wrapper.find('.virtual-list-container').element as HTMLElement;
+    const elm = wrapper.find('.ldk-virtual-list-container').element as HTMLElement;
     await triggerScrollTo(elm, 0, 150);
     await delay();
     expect(onLoad).toBeCalledTimes(1);

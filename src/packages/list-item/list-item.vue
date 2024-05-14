@@ -6,7 +6,7 @@
   import { listItemProps } from './props';
 
   defineOptions({
-    name: 'ListItem',
+    name: 'LdkListItem',
   });
   const { itemClass, itemData, itemIndex } = defineProps(listItemProps);
 
@@ -17,7 +17,7 @@
 <template>
   <div
     ref="itemRef"
-    :class="['virtual-list-item', itemClass]"
+    :class="['ldk-virtual-list-item', itemClass]"
     :data-index="itemIndex"
   >
     <slot
@@ -28,7 +28,7 @@
 </template>
 
 <style scoped>
-  .virtual-list-item {
+  .ldk-virtual-list-item {
     position: absolute;
     right: 0;
     left: 0;

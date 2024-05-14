@@ -9,6 +9,6 @@ export default DynamicList;
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DynamicList: typeof DynamicList;
+    LdkDynamicList: typeof DynamicList;
   }
 }

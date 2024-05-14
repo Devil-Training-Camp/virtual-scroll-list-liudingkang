@@ -1,6 +1,6 @@
 {
   "name": "virtual-scroll-list-liudingkang",
-  "version": "6.1.6",
+  "version": "6.2.0",
   "private": false,
   "description": "a vue virtual-scroll-list",
   "main": "lib/virtual-scroll-list.cjs.js",
@@ -9,15 +9,14 @@
   "type": "module",
   "files": [
     "es",
-    "lib"
+    "lib",
+    "import-resolver/lib"
   ],
   "scripts": {
-    "build": "node build/bin.js build",
-    "build2": "rollup -c ./build/config/test.config.js",
-    "build3": "rollup -c ./build/config/test.chunk.config.js",
-    "build4": "rollup -c ./build/config/test.preserve.config.js",
+    "build:ui": "node build/bin.js build",
+    "build:re": "tsup import-resolver/src/index.ts --format esm,cjs --out-dir=import-resolver/lib --dts --clean",
+    "build": "pnpm build:re && pnpm build:ui",
     "dev": "node build/bin.js dev",
-    "build1": "vue-tsc --noEmit && rollup -c ./build/rollup.prod.config.js && tsc -p ./tsconfig.declaration.json -declarationDir dist/es  && tsc -p ./tsconfig.declaration.json -declarationDir dist/lib",
     "dev1": "rollup -wc ./build/config/rollup.dev.config.js",
     "eslint": "eslint --ext .vue,.ts,.js .",
     "eslint:fix": "eslint --ext .vue,.ts,.js . --fix",
@@ -39,9 +38,9 @@
     "test:component": "node build/bin.js test --component "
   },
   "engines": {
-    "node": ">=16.14.2"
+    "node": ">=16.14.2",
+    "pnpm": ">=8.7.0"
   },
-  "packageManager": "pnpm@8.7.0",
   "keywords": [
     "vue3",
     "virtual-scroll-list"
@@ -102,7 +101,6 @@
     "hash-sum": "^2.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "markdown-it-vitepress-demo": "^0.1.11",
     "postcss": "^8.4.31",
     "postcss-preset-env": "^9.2.0",
     "prettier": "^3.0.3",
@@ -126,6 +124,7 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^6.0.3",
     "stylelint-prettier": "^4.0.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.2.2",
     "vitepress": "1.0.0-rc.45",
     "vitest": "^1.4.0",

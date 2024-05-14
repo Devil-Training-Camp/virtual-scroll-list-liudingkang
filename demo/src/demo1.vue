@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <DynamicList
+  <LdkDynamicList
     :item-size="70"
     item-class="item"
     :width="300"
@@ -30,7 +30,7 @@
         {{ item }}
       </div>
     </template>
-  </DynamicList>
+  </LdkDynamicList>
 </template>
 
 <style scoped>

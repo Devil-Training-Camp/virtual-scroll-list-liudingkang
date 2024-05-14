@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`test dynamic-list component props > test dynamic-list data 0 1`] = `
-"<div data-v-9610e607="" class="virtual-list-container dynamic-list" style="width: 100%; height: 300px;">
-  <div data-v-9610e607="" class="virtual-list" style="width: 100%; height: 0px;"></div>
+"<div data-v-9610e607="" class="ldk-virtual-list-container ldk-dynamic-list" style="width: 100%; height: 300px;">
+  <div data-v-9610e607="" class="ldk-virtual-list" style="width: 100%; height: 0px;"></div>
 </div>"
 `;
